@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Krita: малюємо растрове зображення</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&family=Unbounded:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --desk:#DCE4EE; --paper:#FFFFFF; --ink:#1B2430; --ink-soft:#4A5668; --line:#D5DCE6;
+  --accent:#1F5FBF; --accent-ink:#FFFFFF; --soft:#F2F5FA; --mark:#FFE58A; --mark-ink:#1B2430;
+  --ok:#177A4D; --ok-bg:#E3F4EA; --bad:#B5382F; --bad-bg:#FBE7E4; --shadow:0 1px 2px rgba(20,30,50,.08),0 8px 30px rgba(20,30,50,.10);
+  --win:#EEF1F6; --win-bar:#C9D2DF; --win-dock:#DDE3EC; --win-tool:#B9C4D4;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --desk:#0F141A; --paper:#19212B; --ink:#E7ECF3; --ink-soft:#A5B1C2; --line:#2C3746;
+    --accent:#7FB0FF; --accent-ink:#0B1626; --soft:#202A36; --mark:#6B5A14; --mark-ink:#FFF3C4;
+    --ok:#6FD6A0; --ok-bg:#12301F; --bad:#FF8F85; --bad-bg:#3A1B18; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 30px rgba(0,0,0,.35);
+    --win:#232C38; --win-bar:#33404F; --win-dock:#2B3644; --win-tool:#3C4B5E;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --desk:#0F141A; --paper:#19212B; --ink:#E7ECF3; --ink-soft:#A5B1C2; --line:#2C3746;
+  --accent:#7FB0FF; --accent-ink:#0B1626; --soft:#202A36; --mark:#6B5A14; --mark-ink:#FFF3C4;
+  --ok:#6FD6A0; --ok-bg:#12301F; --bad:#FF8F85; --bad-bg:#3A1B18; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 30px rgba(0,0,0,.35);
+  --win:#232C38; --win-bar:#33404F; --win-dock:#2B3644; --win-tool:#3C4B5E;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 12px);scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--desk);color:var(--ink);font:400 16px/1.6 "Onest","Segoe UI",Roboto,Arial,sans-serif;-webkit-text-size-adjust:100%}
+.sheet{max-width:820px;margin:20px auto;background:var(--paper);padding:clamp(20px,4.5vw,52px);border-radius:6px;box-shadow:var(--shadow)}
+@media (max-width:860px){.sheet{margin:10px}}
+h1,h2{font-family:"Unbounded","Onest","Segoe UI",Arial,sans-serif;font-weight:600;line-height:1.25;margin:0}
+h1{font-size:clamp(25px,5vw,38px);letter-spacing:-.01em}
+h2{font-size:clamp(20px,3.6vw,26px);margin:0 0 6px}
+h3{font-size:18px;font-weight:700;margin:30px 0 8px;line-height:1.3}
+p{margin:0 0 12px}
+mark{background:var(--mark);color:var(--mark-ink);padding:0 .2em;border-radius:2px}
+kbd{font:500 13px "Onest",sans-serif;background:var(--soft);border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:1px 6px;white-space:nowrap}
+a{color:var(--accent)}
+.lead{color:var(--ink-soft);font-size:18px;margin-top:10px}
+section{padding-top:44px;margin-top:44px;border-top:1px solid var(--line)}
+section.first{border-top:0;margin-top:28px;padding-top:0}
+section.cont{border-top:0;margin-top:10px;padding-top:10px}
+.section-note{color:var(--ink-soft);margin-bottom:18px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+.who{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:28px 0 22px}
+.who label{font-weight:500}
+.who input{flex:1 1 240px;font:inherit;padding:10px 12px;border:1.5px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink)}
+.timeline{display:flex;gap:4px;margin:0;padding:0;list-style:none}
+.timeline li{display:flex}
+.timeline a{display:block;width:100%;text-decoration:none;color:var(--ink);background:var(--soft);border-top:4px solid var(--accent);padding:8px 10px 9px;border-radius:0 0 4px 4px;font-size:14px;line-height:1.35}
+.timeline a b{display:block;font-size:14px}
+.timeline a span{color:var(--ink-soft)}
+.timeline li:nth-child(1){flex:8}.timeline li:nth-child(2){flex:4}.timeline li:nth-child(3){flex:8}.timeline li:nth-child(4){flex:18}.timeline li:nth-child(5){flex:4}
+@media (max-width:620px){.timeline{flex-direction:column}.timeline li{flex:none!important}}
+
+.need{margin-top:22px;border:1.5px solid var(--line);border-radius:6px;padding:12px 16px;background:var(--soft);font-size:15px}
+.need b{font-weight:700}
+
+/* interface diagram */
+.winfig svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:6px;background:var(--win)}
+.winfig .reg{cursor:pointer}
+.winfig .reg .shape{stroke:var(--ink-soft);stroke-width:1}
+.winfig .reg:hover .shape,.winfig .reg.on .shape{stroke:var(--accent);stroke-width:3}
+.winfig .reg.on .shape{fill-opacity:1}
+.winfig text{font:500 11px "Onest",Arial,sans-serif;fill:var(--ink);pointer-events:none}
+.winfig .num{font-weight:700;font-size:13px}
+.regtext{min-height:4.6em;margin-top:10px;padding:12px 14px;border-left:5px solid var(--accent);background:var(--soft);border-radius:0 6px 6px 0}
+.regtext b{display:block;margin-bottom:2px}
+.note{font-size:14px;color:var(--ink-soft)}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:12px 0}
+.tool{border:1px solid var(--line);border-radius:6px;padding:12px 14px;background:var(--paper)}
+.tool b{display:block;margin-bottom:3px}
+.tool .k{margin-top:6px;font-size:14px;color:var(--ink-soft)}
+table.data{border-collapse:collapse;width:100%;font-size:15px}
+table.data th,table.data td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.data th{background:var(--soft)}
+.tscroll{overflow-x:auto}
+.remember{margin-top:28px;border:2px solid var(--accent);border-radius:6px;padding:16px 20px}
+.remember h3{margin:0 0 8px}
+.remember ul{margin:0;padding-left:20px}
+.remember li{margin-bottom:6px}
+
+/* tasks */
+.pts{display:inline-block;font:500 14px "Onest",sans-serif;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:1px 10px;margin-left:8px;vertical-align:middle;white-space:nowrap}
+.where{list-style:none;margin:0 0 14px;padding:0}
+.where li{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:10px 12px;border:1.5px solid var(--line);border-radius:6px;margin-bottom:8px}
+.where li .t{flex:1 1 280px}
+.where select{font:inherit;padding:8px 10px;border:1.5px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);max-width:100%}
+.where li.is-right{border-color:var(--ok);background:var(--ok-bg)}
+.where li.is-wrong{border-color:var(--bad);background:var(--bad-bg)}
+.where .ans{flex-basis:100%;font-size:14px}
+.steps{list-style:none;margin:0;padding:0}
+.steps li{margin:0 0 6px}
+.steps label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;padding:6px 4px}
+.steps input{margin-top:5px;accent-color:var(--accent);width:18px;height:18px;flex:none}
+.steps input:checked+span{color:var(--ink-soft)}
+.group{font-weight:700;margin:22px 0 4px}
+.progress{display:flex;align-items:center;gap:12px;margin:12px 0 4px;font-size:15px;color:var(--ink-soft)}
+.bar{flex:1;height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .25s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.sample{display:grid;grid-template-columns:minmax(0,240px) 1fr;gap:20px;align-items:start;margin:14px 0}
+@media (max-width:620px){.sample{grid-template-columns:1fr}}
+.sample svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff}
+.q{border:0;padding:0;margin:0 0 20px;min-width:0}
+.q legend{font-weight:700;padding:0;margin-bottom:8px;display:block}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border:1.5px solid var(--line);border-radius:6px;margin-bottom:6px;cursor:pointer;background:var(--paper)}
+.opt:hover{border-color:var(--accent)}
+.opt input{margin-top:5px;accent-color:var(--accent);width:17px;height:17px;flex:none}
+.opt .l{color:var(--ink-soft);min-width:1.2em}
+.opt.is-right{border-color:var(--ok);background:var(--ok-bg)}
+.opt.is-wrong{border-color:var(--bad);background:var(--bad-bg)}
+.fb{margin:8px 0 0;padding:9px 12px;border-radius:6px;font-size:15px}
+.fb.ok{background:var(--ok-bg);color:var(--ok)}
+.fb.no{background:var(--bad-bg);color:var(--bad)}
+.btn{font:700 16px "Onest","Segoe UI",Arial,sans-serif;background:var(--accent);color:var(--accent-ink);border:0;border-radius:6px;padding:11px 20px;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn:disabled{opacity:.55;cursor:default;filter:none}
+.msg{min-height:1.6em;margin:10px 0 0;font-weight:500}
+.bonus li{margin-bottom:8px}
+.sum{margin-top:6px;border:2px solid var(--accent);border-radius:6px;padding:18px 20px}
+.sum h3{margin:0}
+.sum dl{display:grid;grid-template-columns:1fr auto;gap:6px 18px;margin:12px 0}
+.sum dt{color:var(--ink-soft)}
+.sum dd{margin:0;font-weight:700;text-align:right}
+.sum .total{font-family:"Unbounded","Onest",sans-serif;font-size:22px}
+.sum p.small{font-size:14px;color:var(--ink-soft);margin:6px 0 0}
+footer{margin-top:40px;color:var(--ink-soft);font-size:14px}
+</style>
+</head>
+<body>
+<main class="sheet">
+  <header>
+    <h1>Krita: малюємо растрове зображення</h1>
+    <p class="lead">Тема 4. Графічні зображення, урок 20. Прочитай теорію, виконай три завдання в програмі Krita й пройди короткий тест. Усього 12 балів.</p>
+    <div class="who">
+      <label for="name">Твоє прізвище та ім’я</label>
+      <input id="name" type="text" autocomplete="off" placeholder="Наприклад, Коваленко Олена">
+    </div>
+    <ol class="timeline" aria-label="План уроку">
+      <li><a href="#theory"><b>Теорія</b><span>8 хв</span></a></li>
+      <li><a href="#task1"><b>Завдання 1</b><span>4 хв</span></a></li>
+      <li><a href="#task2"><b>Завдання 2</b><span>8 хв</span></a></li>
+      <li><a href="#task3"><b>Завдання 3</b><span>18 хв</span></a></li>
+      <li><a href="#test"><b>Тест і підсумок</b><span>4 хв</span></a></li>
+    </ol>
+    <div class="need"><b>Що потрібно.</b> Програма Krita (безкоштовна, на сайті <a href="https://krita.org/uk/" target="_blank" rel="noopener">krita.org</a>) і твоя папка для збереження. Якщо інтерфейс Krita англійською, до назв інструментів подано англійські відповідники.</div>
+  </header>
+
+  <!-- THEORY -->
+  <section id="theory" class="first">
+    <h2>Теорія</h2>
+
+    <h3>Що таке Krita</h3>
+    <p><mark>Krita</mark> — вільний графічний редактор для малювання. На цьому уроці ми використовуємо її як <b>растровий</b> редактор: коли ти малюєш, програма змінює <b>кольори пікселів</b>. Про векторні можливості Krita ми поговоримо пізніше.</p>
+
+    <h3>Вікно Krita</h3>
+    <p>Натискай на частини схеми й читай, що там розташовано. Розташування панелей на твоєму комп’ютері може трохи відрізнятися.</p>
+    <figure class="winfig" style="margin:0">
+      <svg viewBox="0 0 600 380" role="group" aria-label="Схема вікна Krita">
+        <g class="reg" data-r="menu" tabindex="0" role="button" aria-label="Рядок меню">
+          <rect class="shape" x="0" y="0" width="600" height="26" style="fill:var(--win-bar)"/>
+          <text x="10" y="17">Файл</text><text x="52" y="17">Зображення</text><text x="127" y="17">Шар</text><text x="160" y="17">Вибір</text><text x="200" y="17">Фільтр</text>
+          <text class="num" x="578" y="18">1</text>
+        </g>
+        <g class="reg" data-r="brushbar" tabindex="0" role="button" aria-label="Панель Пензлі та ін.">
+          <rect class="shape" x="0" y="26" width="600" height="34" style="fill:var(--win-dock)"/>
+          <text x="10" y="47">Пензлі та ін.: пензель, розмір, непрозорість</text>
+          <text class="num" x="578" y="48">2</text>
+        </g>
+        <g class="reg" data-r="toolbox" tabindex="0" role="button" aria-label="Панель інструментів">
+          <rect class="shape" x="0" y="60" width="56" height="296" style="fill:var(--win-tool)"/>
+          <rect x="12" y="74" width="32" height="26" rx="4" style="fill:var(--paper)" opacity=".7"/><rect x="12" y="108" width="32" height="26" rx="4" style="fill:var(--paper)" opacity=".7"/><rect x="12" y="142" width="32" height="26" rx="4" style="fill:var(--paper)" opacity=".7"/><rect x="12" y="176" width="32" height="26" rx="4" style="fill:var(--paper)" opacity=".7"/><rect x="12" y="210" width="32" height="26" rx="4" style="fill:var(--paper)" opacity=".7"/>
+          <text class="num" x="24" y="340">3</text>
+        </g>
+        <g class="reg" data-r="canvas" tabindex="0" role="button" aria-label="Полотно">
+          <rect class="shape" x="56" y="60" width="364" height="296" style="fill:var(--win)"/>
+          <rect x="106" y="76" width="264" height="264" fill="#fff" stroke="#9AA6B8"/>
+          <path d="M140 270 Q190 200 240 250 T330 190" stroke="#1F5FBF" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <text class="num" x="396" y="80">4</text>
+        </g>
+        <g class="reg" data-r="tooloptions" tabindex="0" role="button" aria-label="Параметри інструмента">
+          <rect class="shape" x="420" y="60" width="180" height="150" style="fill:var(--win-dock)"/>
+          <text x="432" y="80">Параметри інструмента</text>
+          <rect x="432" y="94" width="150" height="10" rx="3" style="fill:var(--win-tool)"/><rect x="432" y="114" width="120" height="10" rx="3" style="fill:var(--win-tool)"/><rect x="432" y="134" width="140" height="10" rx="3" style="fill:var(--win-tool)"/>
+          <text class="num" x="578" y="202">5</text>
+        </g>
+        <g class="reg" data-r="layers" tabindex="0" role="button" aria-label="Панель Шари">
+          <rect class="shape" x="420" y="210" width="180" height="146" style="fill:var(--win-dock)"/>
+          <text x="432" y="230">Шари</text>
+          <rect x="432" y="242" width="156" height="22" rx="3" style="fill:var(--win-tool)"/><rect x="432" y="270" width="156" height="22" rx="3" style="fill:var(--win-tool)" opacity=".6"/>
+          <text class="num" x="578" y="348">6</text>
+        </g>
+      </svg>
+      <div class="regtext" id="regText" aria-live="polite"><b>Натисни на частину вікна</b>Тут з’явиться пояснення.</div>
+    </figure>
+
+    <h3>Основні інструменти</h3>
+    <div class="tools">
+      <div class="tool"><b>Інструмент довільного малювання</b>Малює «від руки» пензлем. Це головний інструмент. <div class="k">Freehand Brush · клавіша <kbd>B</kbd></div></div>
+      <div class="tool"><b>Гумка</b>У Krita гумка — це режим пензля: натисни <kbd>E</kbd>, і пензель стирає. Ще раз <kbd>E</kbd> — знову малює. <div class="k">Eraser mode</div></div>
+      <div class="tool"><b>Заповнити неперервну область</b>Заливає суцільну ділянку одного кольору кольором переднього плану. <div class="k">Fill · клавіша <kbd>F</kbd></div></div>
+      <div class="tool"><b>Пряма, Еліпс, Прямокутник</b>Малюють геометричні фігури. Вигляд фігури налаштовують у «Параметрах інструмента». <div class="k">Line, Ellipse, Rectangle</div></div>
+      <div class="tool"><b>Прямокутний вибір</b>Позначає ділянку, з якою потім працюють: рухають, повертають, заливають. <div class="k">Rectangular Selection · <kbd>Ctrl</kbd> + <kbd>R</kbd></div></div>
+      <div class="tool"><b>Перетворити шар або вибране</b>Повертає й змінює розмір позначеного фрагмента, зокрема кутовим маркером. <div class="k">Transform · <kbd>Ctrl</kbd> + <kbd>T</kbd></div></div>
+    </div>
+
+    <h3>Корисні клавіші</h3>
+    <div class="tscroll">
+    <table class="data">
+      <tr><th>Що зробити</th><th>Клавіші</th></tr>
+      <tr><td>Збільшити або зменшити пензель</td><td><kbd>]</kbd> і <kbd>[</kbd>, або утримуй <kbd>Shift</kbd> і веди мишкою</td></tr>
+      <tr><td>Узяти колір із малюнка</td><td><kbd>Ctrl</kbd> + клацання</td></tr>
+      <tr><td>Поміняти місцями колір переднього плану й тла</td><td><kbd>X</kbd></td></tr>
+      <tr><td>Повернути стандартні кольори (чорний і білий)</td><td><kbd>D</kbd></td></tr>
+      <tr><td>Скасувати останню дію</td><td><kbd>Ctrl</kbd> + <kbd>Z</kbd></td></tr>
+      <tr><td>Повторити скасовану дію</td><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd></td></tr>
+      <tr><td>Позначити все / зняти позначення</td><td><kbd>Ctrl</kbd> + <kbd>A</kbd> / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd></td></tr>
+    </table>
+    </div>
+
+    <h3>Колір і розмір документа</h3>
+    <p>У Krita завжди діють два кольори. <mark>Колір переднього плану</mark> — ним ти малюєш. <mark>Колір тла</mark> — другий колір, який легко міняти місцями з першим клавішею <kbd>X</kbd>. Щоб змінити колір, клацни на його квадратик: відкриється вікно «Виберіть колір».</p>
+    <p>Новий документ створюють командою <b>Новий файл</b> у початковому вікні або <b>Файл → Новий</b> (<kbd>Ctrl</kbd> + <kbd>N</kbd>). У вікні «Створити новий документ» на вкладці <b>Розміри</b> задають розмір у пікселях. Формат <b>А4 (300)</b> — це приблизно <b>2480 × 3508 пікселів</b>, тобто близько 8,7 мільйона пікселів. Саме стільки точок може мати твоє растрове зображення.</p>
+
+    <h3>Збереження</h3>
+    <p>Звичайне збереження (<kbd>Ctrl</kbd> + <kbd>S</kbd>) створює файл власного формату Krita <b>.kra</b>: він зберігає всі шари й підходить, щоб продовжити роботу згодом. Щоб отримати малюнок для друку чи відправлення, обери <b>Файл → Зберегти як…</b> і вкажи тип <b>.png</b> або <b>.jpg</b>.</p>
+
+    <div class="remember">
+      <h3>Запам’ятай</h3>
+      <ul>
+        <li>У растровому редакторі Krita ти малюєш пікселі: кожен мазок змінює кольори точок.</li>
+        <li>Пензель — <kbd>B</kbd>, гумка — <kbd>E</kbd>, заливка — <kbd>F</kbd>, скасувати — <kbd>Ctrl</kbd> + <kbd>Z</kbd>.</li>
+        <li>Є колір переднього плану (малюємо ним) і колір тла; міняються клавішею <kbd>X</kbd>.</li>
+        <li>.kra зберігає шари, а .png і .jpg — готовий малюнок.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TASK 1 -->
+  <section id="task1">
+    <h2>Завдання 1. Де що у вікні? <span class="pts">2 бали</span></h2>
+    <p class="section-note">Вибери в кожному рядку частину вікна Krita з теоретичної схеми й натисни «Перевірити».</p>
+    <ul class="where" id="where"></ul>
+    <button type="button" class="btn" id="whereBtn">Перевірити</button>
+    <p class="msg" id="whereMsg" role="status"></p>
+  </section>
+
+  <!-- TASK 2 -->
+  <section id="task2" class="cont">
+    <h2>Завдання 2. Розминка в Krita <span class="pts">2 бали</span></h2>
+    <p class="section-note">Відкрий Krita й виконуй дії по черзі. Постав галочку, коли дія вдалася. Це чернетка, зберігати її не потрібно.</p>
+    <ul class="steps" id="warm">
+      <li><label><input type="checkbox"><span>Вибери <b>Новий файл</b> (або <b>Файл → Новий</b>). Введи <b>Ширина 800</b> і <b>Висота 600</b> пікселів, натисни <b>Створити</b>.</span></label></li>
+      <li><label><input type="checkbox"><span>Увімкни <b>Інструмент довільного малювання</b> (<kbd>B</kbd>) і намалюй хвилясту лінію. Змінюй розмір пензля клавішами <kbd>[</kbd> і <kbd>]</kbd>.</span></label></li>
+      <li><label><input type="checkbox"><span>Клацни на колір переднього плану, у вікні <b>«Виберіть колір»</b> вибери інший і проведи ще одну лінію.</span></label></li>
+      <li><label><input type="checkbox"><span>Натисни <kbd>E</kbd> і сотри частину лінії. Натисни <kbd>E</kbd> ще раз, щоб знову малювати.</span></label></li>
+      <li><label><input type="checkbox"><span>Намалюй замкнене коло, вибери <b>Заповнити неперервну область</b> (<kbd>F</kbd>) і клацни всередині кола.</span></label></li>
+      <li><label><input type="checkbox"><span>Натисни <kbd>Ctrl</kbd> + <kbd>Z</kbd>, щоб скасувати заливку. Потім збільш масштаб (клавіша <kbd>+</kbd>) до краю лінії й <b>знайди окремі пікселі</b>.</span></label></li>
+    </ul>
+    <p class="msg" id="warmMsg">Виконано 0 з 6 дій.</p>
+  </section>
+
+  <!-- TASK 3 -->
+  <section id="task3">
+    <h2>Завдання 3. Палітра з пензлем <span class="pts">5 балів</span></h2>
+    <p class="section-note">Намалюй за зразком палітру художника й пензель. Усе виконується в Krita; тут відмічай виконані кроки.</p>
+    <div class="sample">
+      <figure style="margin:0">
+        <svg viewBox="0 0 320 360" role="img" aria-label="Схематичний зразок: синя палітра з отвором і чотирма плямами фарб та пензель">
+          <rect width="320" height="360" fill="#fff"/>
+          <g transform="rotate(-30 150 170)"><ellipse cx="150" cy="170" rx="100" ry="125" fill="#1F6FD0"/></g>
+          <path d="M72 262 Q100 244 120 226" stroke="#fff" stroke-width="14" stroke-linecap="round" fill="none"/>
+          <circle cx="206" cy="108" r="11" fill="#fff"/>
+          <g fill="#9A9A9A"><circle cx="124" cy="126" r="24"/><circle cx="180" cy="168" r="24"/><circle cx="118" cy="196" r="24"/><circle cx="172" cy="232" r="24"/></g>
+          <circle cx="119" cy="121" r="22" fill="#D64545"/><circle cx="175" cy="163" r="22" fill="#F3C623"/><circle cx="113" cy="191" r="22" fill="#4FAE5C"/><circle cx="167" cy="227" r="22" fill="#8E4FC4"/>
+          <polygon points="214,332 227,340 296,240 283,231" fill="#8A5A2B"/>
+          <polygon points="283,231 296,240 308,221 295,212" fill="#8EC9F0"/>
+          <path d="M295 212 Q316 184 311 170 Q293 190 295 212 Z" fill="#3A3A3A"/>
+        </svg>
+        <figcaption class="note">Схематичний зразок. Твій малюнок може бути трохи іншим.</figcaption>
+      </figure>
+      <div>
+        <p>Виконуй кроки по групах. Значення розмірів узято з підручника; якщо в твоїй версії Krita якогось пункту немає, обери найближчий.</p>
+        <div class="progress"><span id="progText">Виконано 0 з 13 кроків</span><div class="bar"><i id="progBar"></i></div></div>
+      </div>
+    </div>
+
+    <p class="group">А. Новий документ і кольори</p>
+    <ul class="steps" data-grp="1">
+      <li><label><input type="checkbox" data-step><span>Вибери <b>Новий файл</b>. На вкладці <b>Розміри</b> у списку <b>Стандартний</b> вибери <b>А4 (300)</b> і натисни <b>Створити</b>.</span></label></li>
+      <li><label><input type="checkbox" data-step><span>Встанови <b>колір переднього плану — синій</b>, а <b>колір тла — білий</b> (вікно «Виберіть колір»).</span></label></li>
+    </ul>
+
+    <p class="group">Б. Палітра</p>
+    <ul class="steps" data-grp="2">
+      <li><label><input type="checkbox" data-step><span>Вибери інструмент <b>Еліпс</b>. У «Параметрах інструмента» встанови: <b>Заповнення — Колір переднього плану</b>, <b>Контур — Пензель</b>, <b>Ширина 1400 пк</b>, <b>Висота 1700 пк</b>. Намалюй еліпс.</span></label></li>
+      <li><label><input type="checkbox" data-step><span>Виділи еліпс інструментом <b>Прямокутний вибір</b>. Увімкни <b>Перетворити шар або вибране</b> і поверни еліпс кутовим маркером приблизно на <b>30° проти годинникової стрілки</b>.</span></label></li>
+      <li><label><input type="checkbox" data-step><span>Зніми виділення: <b>Вибір → Скасувати позначене</b>.</span></label></li>
+    </ul>
+
+    <p class="group">В. Розріз, отвір і фарби</p>
+    <ul class="steps" data-grp="3">
+      <li><label><input type="checkbox" data-step><span>Поміняй колір переднього плану й тла місцями (<kbd>X</kbd>). Вибери <b>Пряма</b>, пензель <b>базовий 1</b>, непрозорість <b>100 %</b>, розмір <b>200 пк</b>, і проведи лінію розрізу на палітрі.</span></label></li>
+      <li><label><input type="checkbox" data-step><span>Заокругли кінець розрізу <b>Інструментом довільного малювання</b>, змінюючи розмір і колір.</span></label></li>
+      <li><label><input type="checkbox" data-step><span>Білим кольором, розмір <b>200 пк</b>, постав одну крапку — отвір для великого пальця.</span></label></li>
+      <li><label><input type="checkbox" data-step><span>Сірим кольором, розмір <b>300 пк</b>, постав чотири кола: це тіні від фарб.</span></label></li>
+      <li><label><input type="checkbox" data-step><span>Трохи вище й лівіше від кожного сірого кола постав коло фарби: червоне, жовте, зелене й фіолетове (або інші кольори).</span></label></li>
+    </ul>
+
+    <p class="group">Г. Пензель</p>
+    <ul class="steps" data-grp="4">
+      <li><label><input type="checkbox" data-step><span>Інструментом <b>Малювання багатокутника</b> створи два чотирикутники: коричневий (ручка) і світло-блакитний (металева частина). За потреби скористайся <b>Заповнити неперервну область</b>.</span></label></li>
+      <li><label><input type="checkbox" data-step><span>Намалюй верхню частину пензля (ворс) інструментами <b>Довільний контур</b> і <b>Заповнити неперервну область</b>.</span></label></li>
+    </ul>
+
+    <p class="group">Д. Збереження</p>
+    <ul class="steps" data-grp="5">
+      <li><label><input type="checkbox" data-step><span>Вибери <b>Файл → Зберегти як…</b>, тип <b>JPEG</b>, ім’я файлу <b>вправа 4.2</b>, твоя папка. Закрий вікно Krita.</span></label></li>
+    </ul>
+
+    <h3>Самоперевірка завдання 3</h3>
+    <p class="note">Подивись на свій малюнок і постав галочку біля кожного пункту, який виконано. Один пункт — 1 бал.</p>
+    <ul class="steps" id="crit3">
+      <li><label><input type="checkbox"><span>Документ створено у форматі А4 (300), кольори переднього плану й тла встановлено.</span></label></li>
+      <li><label><input type="checkbox"><span>Палітра: еліпс потрібного розміру, повернутий приблизно на 30°.</span></label></li>
+      <li><label><input type="checkbox"><span>Є розріз із заокругленням, отвір і чотири сірі тіні.</span></label></li>
+      <li><label><input type="checkbox"><span>Чотири кольорові плями фарб розташовано зі зміщенням відносно тіней.</span></label></li>
+      <li><label><input type="checkbox"><span>Пензель намальовано, файл збережено як вправа 4.2.jpg.</span></label></li>
+    </ul>
+  </section>
+
+  <!-- TEST -->
+  <section id="test">
+    <h2>Тест <span class="pts">3 бали</span></h2>
+    <p class="section-note">Шість запитань, кожне за 0,5 бала. Відповідь одна.</p>
+    <form id="quiz" onsubmit="return false" novalidate></form>
+    <button type="button" class="btn" id="checkBtn">Перевірити відповіді</button>
+    <p class="msg" id="warn" role="status"></p>
+
+    <h3 style="margin-top:34px">Для тих, хто впорався раніше</h3>
+    <ol class="bonus">
+      <li>Відкрий свій малюнок у Krita, збільш масштаб до краю кола фарби й знайди пікселі. Поясни сусіду, чому краї «сходинками».</li>
+      <li>Придумай власний малюнок за цим самим принципом: тіні, плями й дрібні деталі. Збережи його у форматах <b>.kra</b> і <b>.png</b> і порівняй розмір файлів.</li>
+      <li>Спробуй клавішу <kbd>M</kbd> (дзеркальне малювання) і дзеркально намалюй метелика.</li>
+    </ol>
+  </section>
+
+  <!-- SUMMARY -->
+  <section id="check" class="cont">
+    <h2>Підсумок</h2>
+    <div class="sum" aria-live="polite">
+      <h3 id="sumName">Мій підсумок</h3>
+      <dl>
+        <dt>Завдання 1. Де що у вікні?</dt><dd id="s1">не перевірено</dd>
+        <dt>Завдання 2. Розминка</dt><dd id="s2">0 з 2</dd>
+        <dt>Завдання 3. Палітра з пензлем</dt><dd id="s3">0 з 5</dd>
+        <dt>Тест</dt><dd id="st">не пройдено</dd>
+        <dt>Разом</dt><dd class="total" id="sTotal">0 з 12</dd>
+      </dl>
+      <p class="small">Покажи цей підсумок і свій файл учителю. Остаточну оцінку виставляє вчитель після перегляду малюнка.</p>
+    </div>
+  </section>
+
+  <footer>Тема 4. Графічні зображення, урок 20. Практичне завдання адаптовано за вправою 4.2 підручника «Інформатика, 6 клас» (Ривкінд та ін.).</footer>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var store = {
+    get: function(k){ try { return window.localStorage.getItem(k); } catch(e){ return null; } },
+    set: function(k,v){ try { window.localStorage.setItem(k,v); } catch(e){} }
+  };
+  var $ = function(s,r){ return (r||document).querySelector(s); };
+  var $$ = function(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+  var letters = ["а","б","в","г"];
+  function fmt(n){ return String(n).replace(".",","); }
+  var pts = { z1:null, z2:0, z3:0, test:null };
+
+  /* name */
+  var nameInput = $("#name");
+  nameInput.value = store.get("k20_name") || "";
+  function renderName(){ var v = nameInput.value.trim(); $("#sumName").textContent = v ? "Підсумок: " + v : "Мій підсумок"; }
+  nameInput.addEventListener("input", function(){ store.set("k20_name", nameInput.value); renderName(); });
+  renderName();
+
+  /* interface diagram */
+  var R = {
+    menu:["Рядок меню","Тут усі команди програми: Файл (створити, відкрити, зберегти), Зображення, Шар, Вибір, Фільтр."],
+    brushbar:["Панель «Пензлі та ін.»","Тут вибирають вигляд пензля, його розмір і непрозорість, а також змінюють колір."],
+    toolbox:["Панель інструментів","Тут обирають інструмент: довільне малювання, пряму, еліпс, заливку, вибір, перетворення."],
+    canvas:["Полотно","Це те, що ти малюєш. Його розмір ти задаєш під час створення документа."],
+    tooloptions:["Параметри інструмента","Тут налаштовують вибраний інструмент, наприклад ширину й висоту еліпса чи спосіб заповнення."],
+    layers:["Панель «Шари»","Малюнок можна складати з прозорих шарів, ніби з накладених плівок. Докладніше про шари — на наступних уроках."]
+  };
+  var regs = $$(".winfig .reg");
+  function showReg(g){
+    regs.forEach(function(x){ x.classList.remove("on"); }); g.classList.add("on");
+    var d = R[g.getAttribute("data-r")], box = $("#regText"); box.innerHTML = "";
+    var b = document.createElement("b"); b.textContent = d[0]; box.appendChild(b); box.appendChild(document.createTextNode(d[1]));
+  }
+  regs.forEach(function(g){
+    g.addEventListener("click", function(){ showReg(g); });
+    g.addEventListener("keydown", function(e){ if(e.key==="Enter" || e.key===" "){ e.preventDefault(); showReg(g); } });
+  });
+
+  /* task 1 */
+  var names = {toolbox:"Панель інструментів", brushbar:"Панель «Пензлі та ін.»", tooloptions:"Параметри інструмента", canvas:"Полотно", menu:"Рядок меню", layers:"Панель «Шари»"};
+  var W = [
+    {t:"Тут обирають інструмент: пряму, еліпс, заливку.", a:"toolbox"},
+    {t:"Тут налаштовують розмір і непрозорість пензля.", a:"brushbar"},
+    {t:"Тут показано параметри вибраного інструмента, наприклад ширину й висоту еліпса.", a:"tooloptions"},
+    {t:"Тут ти малюєш.", a:"canvas"}
+  ];
+  var wh = $("#where");
+  W.forEach(function(w,i){
+    var li = document.createElement("li");
+    var t = document.createElement("span"); t.className = "t"; t.textContent = (i+1)+". "+w.t;
+    var sel = document.createElement("select"); sel.setAttribute("aria-label", w.t);
+    var o0 = document.createElement("option"); o0.value = ""; o0.textContent = "Обери…"; sel.appendChild(o0);
+    ["menu","toolbox","brushbar","tooloptions","canvas","layers"].forEach(function(k){
+      var o = document.createElement("option"); o.value = k; o.textContent = names[k]; sel.appendChild(o);
+    });
+    li.appendChild(t); li.appendChild(sel); wh.appendChild(li);
+  });
+  var whereDone = false;
+  $("#whereBtn").addEventListener("click", function(){
+    if(whereDone) return;
+    var missing = [];
+    $$("select",wh).forEach(function(s,i){ if(!s.value) missing.push(i+1); });
+    if(missing.length && !$("#whereBtn").getAttribute("data-c")){
+      $("#whereMsg").textContent = "Не обрано в рядках: " + missing.join(", ") + ". Обери або натисни кнопку ще раз, щоб перевірити як є.";
+      $("#whereBtn").setAttribute("data-c","1"); return;
+    }
+    var ok = 0;
+    $$("li",wh).forEach(function(li,i){
+      var s = $("select",li), good = s.value === W[i].a; if(good) ok++;
+      s.disabled = true; li.classList.add(good ? "is-right" : "is-wrong");
+      var a = document.createElement("div"); a.className = "ans";
+      a.textContent = good ? "Правильно." : "Правильна відповідь: " + names[W[i].a] + "."; li.appendChild(a);
+    });
+    whereDone = true; $("#whereBtn").disabled = true;
+    pts.z1 = ok === 4 ? 2 : (ok >= 2 ? 1 : 0);
+    $("#whereMsg").textContent = "Правильних відповідей: " + ok + " з 4.";
+    update();
+  });
+
+  /* task 2 */
+  var warm = $$("#warm input");
+  warm.forEach(function(c){ c.addEventListener("change", function(){
+    var n = warm.filter(function(x){ return x.checked; }).length;
+    $("#warmMsg").textContent = "Виконано " + n + " з " + warm.length + " дій.";
+    pts.z2 = n >= 5 ? 2 : (n >= 3 ? 1 : 0); update();
+  }); });
+
+  /* task 3 */
+  var steps = $$("[data-step]");
+  steps.forEach(function(c){ c.addEventListener("change", function(){
+    var d = steps.filter(function(x){ return x.checked; }).length;
+    $("#progText").textContent = "Виконано " + d + " з " + steps.length + " кроків";
+    $("#progBar").style.width = (100*d/steps.length) + "%";
+  }); });
+  $("#progText").textContent = "Виконано 0 з " + steps.length + " кроків";
+  var c3 = $$("#crit3 input");
+  c3.forEach(function(c){ c.addEventListener("change", function(){ pts.z3 = c3.filter(function(x){ return x.checked; }).length; update(); }); });
+
+  /* test */
+  var T = [
+    { id:"ta", text:"Що змінює Krita, коли ти малюєш на растровому шарі?", opts:["кольори пікселів","формули фігур","розмір монітора","назву файлу"], right:0, why:"Растрове зображення складається з пікселів, і кожен мазок змінює їхні кольори." },
+    { id:"tb", text:"Яка клавіша вмикає й вимикає режим гумки?", opts:["B","F","E","X"], right:2, why:"Клавіша E вмикає гумку, повторне натискання повертає до малювання." },
+    { id:"tc", text:"Який інструмент заливає суцільну ділянку кольором переднього плану?", opts:["Прямокутний вибір","Заповнити неперервну область","Еліпс","Перетворити шар або вибране"], right:1, why:"Заповнити неперервну область (клавіша F) заливає ділянку одного кольору." },
+    { id:"td", text:"Як скасувати останню дію?", opts:["Ctrl + Z","Ctrl + N","Ctrl + S","Ctrl + A"], right:0, why:"Ctrl + Z скасовує, а Ctrl + Shift + Z повторює скасовану дію." },
+    { id:"te", text:"Який формат власних файлів Krita зберігає всі шари?", opts:[".jpg",".png",".txt",".kra"], right:3, why:"Файл .kra зберігає шари, тому його використовують, щоб продовжити роботу." },
+    { id:"tf", text:"Що зробити, щоб поміняти місцями колір переднього плану й тла?", opts:["натиснути D","натиснути X","натиснути Delete","закрити програму"], right:1, why:"Клавіша X міняє кольори місцями, а клавіша D повертає чорний і білий." }
+  ];
+  var quiz = $("#quiz");
+  T.forEach(function(q){
+    var fs = document.createElement("fieldset"); fs.className = "q";
+    var lg = document.createElement("legend"); lg.textContent = q.text; fs.appendChild(lg);
+    q.opts.forEach(function(o,j){
+      var lab = document.createElement("label"); lab.className = "opt";
+      var inp = document.createElement("input"); inp.type = "radio"; inp.name = q.id; inp.value = j;
+      var l = document.createElement("span"); l.className = "l"; l.textContent = letters[j]+")";
+      var t = document.createElement("span"); t.textContent = o;
+      lab.appendChild(inp); lab.appendChild(l); lab.appendChild(t); fs.appendChild(lab);
+    });
+    var fb = document.createElement("div"); fb.className = "fb"; fb.hidden = true; fs.appendChild(fb);
+    quiz.appendChild(fs);
+  });
+  var testDone = false, confirmT = false;
+  $("#checkBtn").addEventListener("click", function(){
+    if(testDone) return;
+    var missing = [];
+    T.forEach(function(q,i){ if(!$('input[name="'+q.id+'"]:checked')) missing.push(i+1); });
+    if(missing.length && !confirmT){
+      $("#warn").textContent = "Немає відповіді на запитання: " + missing.join(", ") + ". Дай відповідь або натисни кнопку ще раз, щоб перевірити як є.";
+      confirmT = true; return;
+    }
+    var score = 0;
+    T.forEach(function(q){
+      var sel = $('input[name="'+q.id+'"]:checked'), fs = $('input[name="'+q.id+'"]').closest("fieldset");
+      var v = sel ? +sel.value : -1, ok = v === q.right; if(ok) score++;
+      $$(".opt",fs).forEach(function(lab,j){
+        $("input",lab).disabled = true;
+        if(j===q.right) lab.classList.add("is-right"); else if(j===v) lab.classList.add("is-wrong");
+      });
+      var fb = $(".fb",fs); fb.hidden = false; fb.className = "fb " + (ok ? "ok" : "no"); fb.innerHTML = "";
+      var b = document.createElement("b"); b.textContent = ok ? "Правильно. " : "Не зовсім. ";
+      fb.appendChild(b); fb.appendChild(document.createTextNode(q.why));
+    });
+    testDone = true; $("#checkBtn").disabled = true;
+    pts.test = score*0.5;
+    $("#warn").textContent = "Правильних відповідей: " + score + " з " + T.length + ".";
+    update();
+  });
+
+  /* summary */
+  function update(){
+    $("#s1").textContent = pts.z1 === null ? "не перевірено" : pts.z1 + " з 2";
+    $("#s2").textContent = pts.z2 + " з 2";
+    $("#s3").textContent = pts.z3 + " з 5";
+    $("#st").textContent = pts.test === null ? "не пройдено" : fmt(pts.test) + " з 3";
+    var total = (pts.z1||0) + pts.z2 + pts.z3 + (pts.test||0);
+    $("#sTotal").textContent = fmt(total) + " з 12";
+  }
+  update();
+})();
+</script>
+</body>
+</html>
