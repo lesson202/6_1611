@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Векторна графіка в Canva: уроки 20–22</title>
+<title>Малюємо векторні зображення в Canva: уроки 20–22</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&family=Unbounded:wght@500;600&display=swap" rel="stylesheet">
@@ -189,160 +189,59 @@ details.hint div{padding:0 14px 12px}
 .code{font:500 14px/1.5 ui-monospace,Consolas,"Courier New",monospace;background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:10px 12px;overflow-x:auto;white-space:pre;margin-top:10px}
 .sample2 svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff}
 .legend{margin:10px 0 0;padding-left:20px;font-size:15px}
-
-.pgwrap{display:grid;grid-template-columns:minmax(0,240px) 1fr;gap:20px;align-items:start;margin:12px 0}
-@media (max-width:620px){.pgwrap{grid-template-columns:1fr}}
-.pgview{width:100%;max-width:240px;aspect-ratio:1;border:1px solid var(--line);border-radius:6px;background:#fff;overflow:hidden}
-.pgview svg{display:block;transform-origin:70% 38%;transition:transform .3s}
-@media (prefers-reduced-motion:reduce){.pgview svg{transition:none}}
-.pgview.zoomed svg{transform:scale(8)}
-.zlab{display:block;margin-top:8px;font-size:14px;color:var(--ink-soft);cursor:pointer}
-.zlab input{accent-color:var(--accent);margin-right:6px}
-.pgctl{display:flex;flex-direction:column;gap:8px}
-.pgrow{display:grid;grid-template-columns:9.5em 1fr 3.5em;gap:10px;align-items:center}
-.pgrow select{grid-column:2 / 4;font:inherit;padding:6px 8px;border:1.5px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink)}
-.pgrow input{accent-color:var(--accent);width:100%}
-.pgrow output{text-align:right;font-variant-numeric:tabular-nums}
-.pgrow input:disabled{opacity:.4}
-.grpwrap{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:18px;align-items:center;margin:12px 0}
-@media (max-width:620px){.grpwrap{grid-template-columns:1fr}}
-.grpwrap svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:6px;background:#EAF4FF}
 footer{margin-top:40px;color:var(--ink-soft);font-size:14px}
 </style>
 </head>
 <body>
 <main class="sheet">
   <header>
-    <h1>Векторна графіка в Canva</h1>
-    <p class="lead">Тема 4. Графічні зображення, уроки 20–22. Три уроки в одному файлі: фігури, шари й групування, лінії та експорт. Кожен урок оцінюється окремо (12 балів).</p>
+    <h1>Малюємо векторні зображення в Canva</h1>
+    <p class="lead">Тема 4. Графічні зображення, уроки 20–22. На кожному уроці коротка пам’ятка й два малюнки з фігур: робот і палітра з пензлем, автобус і ракета, емблема й парусник. Кожен урок оцінюється окремо (12 балів).</p>
     <div class="who">
       <label for="name">Твоє прізвище та ім’я</label>
       <input id="name" type="text" autocomplete="off" placeholder="Наприклад, Коваленко Олена">
     </div>
     <div class="switch" role="tablist" aria-label="Вибір уроку">
-      <button type="button" role="tab" id="tab20" aria-selected="true" aria-controls="p20">Урок 20<small>Фігури в Canva</small></button>
-      <button type="button" role="tab" id="tab21" aria-selected="false" aria-controls="p21">Урок 21<small>Шари й групування</small></button>
-      <button type="button" role="tab" id="tab22" aria-selected="false" aria-controls="p22">Урок 22<small>Лінії, малювання, експорт</small></button>
+      <button type="button" role="tab" id="tab20" aria-selected="true" aria-controls="p20">Урок 20<small>Робот і палітра з пензлем</small></button>
+      <button type="button" role="tab" id="tab21" aria-selected="false" aria-controls="p21">Урок 21<small>Автобус і ракета в космосі</small></button>
+      <button type="button" role="tab" id="tab22" aria-selected="false" aria-controls="p22">Урок 22<small>Емблема і парусник</small></button>
     </div>
-    <div class="need"><b>Що потрібно.</b> Браузер і акаунт Canva. Школярі користуються Canva for Education: учитель запрошує клас, і акаунти створюються за його запрошенням. Назви кнопок подано англійською з українським поясненням, бо в інтерфейсі вони можуть називатися трохи інакше.</div>
+    <div class="need"><b>Що потрібно.</b> Браузер і акаунт Canva (Canva for Education за запрошенням учителя). Назви кнопок подано англійською з українським поясненням: у твоєму інтерфейсі вони можуть звучати трохи інакше. Усі фігури й лінії в Canva <b>векторні</b>: їх можна збільшувати без втрати чіткості.</div>
   </header>
 
   <!-- ===================== LESSON 20 ===================== -->
   <div class="panel" id="p20" role="tabpanel" aria-labelledby="tab20">
     <ol class="timeline" aria-label="План уроку 20">
-      <li style="flex:10"><a href="#t20"><b>Теорія</b><span>10 хв</span></a></li>
-      <li style="flex:5"><a href="#z20a"><b>Завдання 1</b><span>5 хв</span></a></li>
-      <li style="flex:20"><a href="#z20b"><b>Завдання 2</b><span>20 хв</span></a></li>
-      <li style="flex:7"><a href="#q20"><b>Тест і підсумок</b><span>7 хв</span></a></li>
+      <li style="flex:5"><a href="#m20"><b>Пам’ятка</b><span>5 хв</span></a></li>
+      <li style="flex:15"><a href="#t20a"><b>Робот</b><span>15 хв</span></a></li>
+      <li style="flex:22"><a href="#t20b"><b>Палітра з пензлем</b><span>22 хв</span></a></li>
+      <li style="flex:3"><a href="#s20"><b>Підсумок</b><span>3 хв</span></a></li>
     </ol>
-    <p class="note" style="margin-top:8px">Урок триває 45 хвилин, із них 3 хвилини займає інструктаж з БЖД на початку.</p>
+    <p class="note" style="margin-top:8px">До 45 хвилин входять 3 хвилини інструктажу з БЖД на початку.</p>
 
-    <section id="t20" class="first">
-      <h2>Теорія</h2>
-      <h3>Canva і векторна графіка</h3>
-      <p><mark>Canva</mark> — графічний редактор, який працює прямо в браузері, нічого встановлювати не треба. У ньому багато готових елементів: фігури, лінії, графіка. Вони належать до <mark>векторної графіки</mark>: Canva зберігає їх як опис, тому їх можна збільшувати без втрати чіткості. А фотографія, яку ти завантажиш із комп’ютера, — це растр, складений із пікселів.</p>
-
-      <h3>Створюємо дизайн</h3>
-      <p>На головній сторінці вибери <b>Create a design</b> (Створити дизайн) → <b>Custom size</b> (Власний розмір), введи ширину й висоту в <b>пікселях</b> (px) і створи дизайн. Відкриється редактор.</p>
-
-      <h3>Вікно редактора</h3>
-      <p>Натискай на частини схеми й читай, що там розташовано. Вигляд редактора може трохи змінюватися.</p>
-      <figure class="winfig" style="margin:0">
-        <svg viewBox="0 0 600 360" role="group" aria-label="Схема вікна Canva">
-          <g class="reg" data-r="top" tabindex="0" role="button" aria-label="Верхня панель">
-            <rect class="shape" x="0" y="0" width="600" height="32" style="fill:var(--win-bar)"/>
-            <text x="10" y="21">Файл · Назва дизайну</text><rect x="520" y="7" width="70" height="18" rx="9" fill="#7D2AE8"/><text x="533" y="20" style="fill:#fff">Share</text>
-            <text class="num" x="470" y="22">1</text>
-          </g>
-          <g class="reg" data-r="side" tabindex="0" role="button" aria-label="Бічна панель">
-            <rect class="shape" x="0" y="32" width="150" height="300" style="fill:var(--win-dock)"/>
-            <text x="12" y="56">Elements</text><text x="12" y="80">Text</text><text x="12" y="104">Uploads</text><text x="12" y="128">Draw</text><text x="12" y="152">Tools</text>
-            <rect x="12" y="170" width="60" height="44" rx="4" style="fill:var(--win-tool)"/><rect x="80" y="170" width="60" height="44" rx="4" style="fill:var(--win-tool)"/>
-            <text class="num" x="130" y="324">2</text>
-          </g>
-          <g class="reg" data-r="toolbar" tabindex="0" role="button" aria-label="Панель інструментів елемента">
-            <rect class="shape" x="150" y="32" width="450" height="34" style="fill:var(--win-tool)"/>
-            <rect x="164" y="40" width="22" height="18" rx="3" fill="#E8A400"/><text x="194" y="53">Colour</text><text x="244" y="53">Border</text><text x="294" y="53">Corners</text><text x="350" y="53">Transparency</text><text x="430" y="53">Position</text>
-            <text class="num" x="582" y="56">3</text>
-          </g>
-          <g class="reg" data-r="canvas" tabindex="0" role="button" aria-label="Полотно">
-            <rect class="shape" x="150" y="66" width="450" height="266" style="fill:var(--win)"/>
-            <rect x="215" y="80" width="320" height="238" fill="#fff" stroke="#9AA6B8"/>
-            <rect x="320" y="150" width="110" height="80" rx="14" fill="#4A90E2"/><circle cx="375" cy="190" r="14" fill="#fff"/>
-            <text class="num" x="570" y="86">4</text>
-          </g>
-          <g class="reg" data-r="bottom" tabindex="0" role="button" aria-label="Масштаб і сторінки">
-            <rect class="shape" x="0" y="332" width="600" height="28" style="fill:var(--win-bar)"/>
-            <text x="160" y="351">Сторінки</text><text x="440" y="351">Масштаб 100 %</text>
-            <text class="num" x="580" y="351">5</text>
-          </g>
-        </svg>
-        <div class="regtext" id="regText20" aria-live="polite"><b>Натисни на частину вікна</b>Тут з’явиться пояснення.</div>
-      </figure>
-
-      <h3>Фігури</h3>
-      <p>Щоб додати фігуру, на бічній панелі відкрий <b>Elements</b> (Елементи) → <b>Shapes</b> (Фігури). Там є лінії, прості фігури, багатокутники, зірки, стрілки, сердечка та інші. Швидкі клавіші (англійська розкладка): <kbd>R</kbd> — прямокутник, <kbd>C</kbd> — коло, <kbd>L</kbd> — лінія.</p>
-      <p>Коли фігуру виділено, над полотном з’являється панель інструментів:</p>
-      <div class="tools">
-        <div class="tool"><b>Colour</b>Колір заливки: суцільний або градієнт.</div>
-        <div class="tool"><b>Stroke style (Border)</b>Колір, стиль і товщина контуру.</div>
-        <div class="tool"><b>Corners</b>Заокруглення кутів; у багатокутників ще й кількість сторін.</div>
-        <div class="tool"><b>Transparency</b>Прозорість елемента.</div>
-        <div class="tool"><b>Edit</b>Змінити фігуру на іншу.</div>
-        <div class="tool"><b>Position</b>Порядок, вирівнювання, шари (урок 21).</div>
-      </div>
-      <ul>
-        <li><b>Розмір.</b> Тягни білі кружечки на кутах, і фігура змінюється пропорційно. Бічні «таблетки» міняють лише ширину або висоту.</li>
-        <li><b>Поворот.</b> Потягни за значок повороту під фігурою ліворуч або праворуч.</li>
-        <li><b>Текст у фігурі.</b> Двічі клацни на фігурі й почни друкувати.</li>
-        <li><b>Копія.</b> Скопіюй і встав фігуру (<kbd>Ctrl</kbd> + <kbd>C</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>) або обери «Duplicate» на панелі.</li>
-        <li><b>Скасувати.</b> <kbd>Ctrl</kbd> + <kbd>Z</kbd>.</li>
-      </ul>
-      <p class="note">Особливості: фігури в Canva не можна віддзеркалити. Готові елементи-картинки у форматі SVG можна лише збільшувати чи перефарбовувати, а контур і кути в них не змінюються.</p>
-
-      <h3>Спробуй сам(а): що зберігає векторна фігура</h3>
-      <p>Це модель однієї фігури. Змінюй параметри й дивись, як змінюється малюнок і короткий опис під ним. Саме опис, а не піксели, зберігає векторна графіка.</p>
-      <div class="pgwrap">
-        <div>
-          <div class="pgview" id="pgView"></div>
-          <label class="zlab"><input type="checkbox" id="pgZoom"> Збільшити до ×8: контур лишається чітким</label>
-        </div>
-        <div class="pgctl">
-          <div class="pgrow"><label for="pgShape">Фігура</label>
-            <select id="pgShape"><option value="rect">Прямокутник</option><option value="ellipse">Коло</option><option value="tri">Трикутник</option></select></div>
-          <div class="pgrow"><label for="pgColor">Колір</label>
-            <select id="pgColor"><option value="#4A90E2">Блакитний</option><option value="#D64545">Червоний</option><option value="#4FAE5C">Зелений</option><option value="#F3C623">Жовтий</option><option value="#8E4FC4">Фіолетовий</option></select></div>
-          <div class="pgrow"><label for="pgBorder">Товщина контуру</label><input type="range" id="pgBorder" min="0" max="16" value="4"><output id="oBorder">4</output></div>
-          <div class="pgrow"><label for="pgRound">Заокруглення кутів</label><input type="range" id="pgRound" min="0" max="50" value="0"><output id="oRound">0</output></div>
-          <div class="pgrow"><label for="pgRot">Поворот</label><input type="range" id="pgRot" min="-45" max="45" value="0"><output id="oRot">0°</output></div>
-          <div class="pgrow"><label for="pgOp">Прозорість</label><input type="range" id="pgOp" min="0" max="80" value="0" step="10"><output id="oOp">0 %</output></div>
-        </div>
-      </div>
-      <div class="code" id="pgCode" aria-live="polite"></div>
-
-      <div class="remember">
-        <h3>Запам’ятай</h3>
-        <ul>
-          <li>Фігури й лінії з <b>Elements</b> у Canva векторні, а фото з комп’ютера растрові.</li>
-          <li>Фігури додають через <b>Elements → Shapes</b> (клавіші <kbd>R</kbd>, <kbd>C</kbd>, <kbd>L</kbd>).</li>
-          <li>Колір, контур, кути й прозорість змінюють на панелі інструментів над полотном.</li>
-          <li>Розмір змінюють білими кружечками на кутах, поворот — значком під фігурою.</li>
-        </ul>
+    <section id="m20" class="first">
+      <h2>Пам’ятка: фігури в Canva</h2>
+      <div class="tscroll">
+      <table class="data">
+        <tr><th>Що зробити</th><th>Як</th></tr>
+        <tr><td>Створити дизайн</td><td><b>Create a design → Custom size</b>, ввести ширину й висоту в пікселях</td></tr>
+        <tr><td>Додати фігуру</td><td><b>Elements → Shapes</b>. Швидко: <kbd>R</kbd> — прямокутник, <kbd>C</kbd> — коло, <kbd>L</kbd> — лінія</td></tr>
+        <tr><td>Змінити колір</td><td>Плитка <b>Colour</b> на панелі над полотном</td></tr>
+        <tr><td>Контур</td><td><b>Stroke style</b>: колір і товщина лінії</td></tr>
+        <tr><td>Заокруглити кути</td><td><b>Corners</b></td></tr>
+        <tr><td>Зробити прозорішою</td><td><b>Transparency</b></td></tr>
+        <tr><td>Змінити розмір</td><td>Білі кружечки на кутах — пропорційно. Бічні «таблетки» — лише ширину або висоту (так із кола виходить еліпс)</td></tr>
+        <tr><td>Повернути</td><td>Значок повороту під фігурою</td></tr>
+        <tr><td>Копія, скасування</td><td><kbd>Ctrl</kbd> + <kbd>C</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>; <kbd>Ctrl</kbd> + <kbd>Z</kbd></td></tr>
+        <tr><td>Зберегти</td><td><b>Share → Download</b>, тип <b>PNG</b></td></tr>
+      </table>
       </div>
     </section>
 
-    <section id="z20a">
-      <h2>Завдання 1. Де що в Canva? <span class="pts">2 бали</span></h2>
-      <p class="section-note">Вибери частину вікна з теоретичної схеми й натисни «Перевірити».</p>
-      <ul class="where" id="where20"></ul>
-      <button type="button" class="btn" id="btn20a">Перевірити</button>
-      <p class="msg" id="msg20a" role="status"></p>
-    </section>
-
-    <section id="z20b">
-      <h2>Завдання 2. Робот із фігур <span class="pts">6 балів</span></h2>
-      <p class="section-note">Склади в Canva веселого робота тільки з фігур. Відмічай виконані кроки.</p>
-      <div class="sample2" style="max-width:240px;margin:10px 0 16px">
+    <section id="t20a">
+      <h2>Завдання 1. Робот <span class="pts">5 балів</span></h2>
+      <p class="section-note">Склади веселого робота тільки з фігур.</p>
+      <figure class="sample2" style="max-width:230px;margin:6px 0 14px">
         <svg viewBox="0 0 240 280" role="img" aria-label="Зразок: робот із фігур">
           <rect width="240" height="280" fill="#fff"/>
           <line x1="120" y1="20" x2="120" y2="50" stroke="#223A5E" stroke-width="6" stroke-linecap="round"/><circle cx="120" cy="16" r="10" fill="#D64545"/>
@@ -354,159 +253,140 @@ footer{margin-top:40px;color:var(--ink-soft);font-size:14px}
           <rect x="88" y="130" width="64" height="12" rx="6" fill="#223A5E"/>
           <rect x="70" y="170" width="100" height="80" rx="18" fill="#5C8FCB" stroke="#223A5E" stroke-width="6"/>
         </svg>
-        <p class="note" style="margin-top:6px">Зразок. Робот може бути яким завгодно.</p>
-      </div>
-      <div class="progress"><span id="prog20">Виконано 0 з 12 кроків</span><div class="bar"><i id="bar20"></i></div></div>
-
-      <p class="group">А. Підготовка</p>
+        <figcaption class="note">Зразок. Робот може бути яким завгодно.</figcaption>
+      </figure>
+      <div class="progress"><span id="prog-t20a">Виконано 0 з 9 кроків</span><div class="bar"><i id="bar-t20a"></i></div></div>
       <ul class="steps">
-        <li><label><input type="checkbox" data-step="20"><span>Відкрий Canva. Вибери <b>Create a design → Custom size</b>, введи <b>800 × 800 px</b> і створи дизайн.</span></label></li>
-        <li><label><input type="checkbox" data-step="20"><span>На бічній панелі відкрий <b>Elements → Shapes</b> і додай <b>прямокутник</b> (або натисни <kbd>R</kbd>).</span></label></li>
+        <li><label><input type="checkbox" data-step="t20a"><span>Створи дизайн: <b>Create a design → Custom size</b>, <b>800 × 800 px</b>.</span></label></li>
+        <li><label><input type="checkbox" data-step="t20a"><span><b>Голова.</b> Додай прямокутник (<kbd>R</kbd>), збільш його за білі кружечки на кутах. Через <b>Corners</b> заокругли кути, через <b>Colour</b> зроби блакитним, через <b>Stroke style</b> додай темно-синій контур завтовшки близько 8.</span></label></li>
+        <li><label><input type="checkbox" data-step="t20a"><span><b>Очі.</b> Додай коло (<kbd>C</kbd>), зроби його білим із контуром і скопіюй (<kbd>Ctrl</kbd> + <kbd>C</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>). Розстав два ока.</span></label></li>
+        <li><label><input type="checkbox" data-step="t20a"><span><b>Зіниці.</b> Додай два менших темних кола всередині білих.</span></label></li>
+        <li><label><input type="checkbox" data-step="t20a"><span><b>Рот.</b> Вузький прямокутник із сильно заокругленими кутами.</span></label></li>
+        <li><label><input type="checkbox" data-step="t20a"><span><b>Антена.</b> Натисни <kbd>L</kbd> і проведи лінію над головою (тримай <kbd>Shift</kbd> для рівної лінії), зроби її темно-синьою завтовшки близько 8. Нагорі додай червоне коло.</span></label></li>
+        <li><label><input type="checkbox" data-step="t20a"><span><b>Тіло.</b> Ще один заокруглений прямокутник під головою.</span></label></li>
+        <li><label><input type="checkbox" data-step="t20a"><span><b>Вуха.</b> Додай з боків голови два вузьких прямокутники. Одне з них поверни значком повороту.</span></label></li>
+        <li><label><input type="checkbox" data-step="t20a"><span><b>Share → Download</b>, тип <b>PNG</b>, ім’я <b>робот</b>.</span></label></li>
       </ul>
-      <p class="group">Б. Голова</p>
-      <ul class="steps">
-        <li><label><input type="checkbox" data-step="20"><span>Збільш прямокутник за білі кружечки на кутах, щоб вийшла голова. Через <b>Corners</b> заокругли кути, а через <b>Colour</b> вибери блакитний колір.</span></label></li>
-        <li><label><input type="checkbox" data-step="20"><span>Через <b>Stroke style</b> задай темно-синій контур завтовшки близько 8.</span></label></li>
-      </ul>
-      <p class="group">В. Очі й рот</p>
-      <ul class="steps">
-        <li><label><input type="checkbox" data-step="20"><span>Додай <b>коло</b> (<kbd>C</kbd>), зроби його білим із контуром і скопіюй (<kbd>Ctrl</kbd> + <kbd>C</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>), щоб вийшли два ока.</span></label></li>
-        <li><label><input type="checkbox" data-step="20"><span>Додай два менших темних кола всередині білих: це зіниці.</span></label></li>
-        <li><label><input type="checkbox" data-step="20"><span>Додай вузький прямокутник із сильно заокругленими кутами: це рот.</span></label></li>
-      </ul>
-      <p class="group">Г. Антена</p>
-      <ul class="steps">
-        <li><label><input type="checkbox" data-step="20"><span>Натисни <kbd>L</kbd> і проведи лінію над головою. Зроби її товщиною близько 8 і темно-синьою.</span></label></li>
-        <li><label><input type="checkbox" data-step="20"><span>На кінці лінії додай маленьке червоне коло.</span></label></li>
-      </ul>
-      <p class="group">Д. Тіло й вуха</p>
-      <ul class="steps">
-        <li><label><input type="checkbox" data-step="20"><span>Додай під головою ще один заокруглений прямокутник: це тіло робота.</span></label></li>
-        <li><label><input type="checkbox" data-step="20"><span>Додай з боків голови два вузьких прямокутники-вуха. Одне з них поверни, потягнувши за значок повороту.</span></label></li>
-      </ul>
-      <p class="group">Е. Збереження</p>
-      <ul class="steps">
-        <li><label><input type="checkbox" data-step="20"><span>Натисни <b>Share → Download</b>, обери тип <b>PNG</b>, ім’я файлу <b>робот</b>, і завантаж.</span></label></li>
-      </ul>
-      <details class="hint"><summary>Щось не виходить?</summary><div>
-        <p><b>Фігура зміщується, коли я хочу змінити колір.</b> Клацни на неї один раз, щоб виділити, і лише тоді шукай інструменти на панелі над полотном.</p>
-        <p><b>Лінія не рівна.</b> Тримай клавішу <kbd>Shift</kbd>, коли ведеш лінію.</p>
-        <p><b>Фігури закривають одна одну не так, як треба.</b> Порядок змінюють у <b>Position</b>; докладно це буде на уроці 21.</p>
-      </div></details>
-      <h3>Самоперевірка завдання 2</h3>
-      <p class="note">Постав галочку біля кожного виконаного пункту. Один пункт — 1 бал.</p>
-      <ul class="steps" data-crit="20">
-        <li><label><input type="checkbox"><span>Дизайн має власний розмір 800 × 800 px.</span></label></li>
-        <li><label><input type="checkbox"><span>Голова має заокруглені кути, власний колір і контур.</span></label></li>
+      <p class="group">Самоперевірка (1 пункт = 1 бал)</p>
+      <ul class="steps" data-crit="t20a">
+        <li><label><input type="checkbox"><span>Дизайн 800 × 800 px, голова має заокруглені кути, колір і контур.</span></label></li>
         <li><label><input type="checkbox"><span>Очі: два білих і два темних кола, одне з них скопійовано.</span></label></li>
-        <li><label><input type="checkbox"><span>Антена складається з лінії та кола.</span></label></li>
-        <li><label><input type="checkbox"><span>Є тіло, а одну з фігур повернуто на кут.</span></label></li>
+        <li><label><input type="checkbox"><span>Є антена (лінія та коло) і рот із заокругленими кутами.</span></label></li>
+        <li><label><input type="checkbox"><span>Є тіло й вуха, одну фігуру повернуто.</span></label></li>
         <li><label><input type="checkbox"><span>Малюнок завантажено у форматі PNG.</span></label></li>
       </ul>
     </section>
 
-    <section id="q20">
-      <h2>Тест <span class="pts">4 бали</span></h2>
-      <p class="section-note">Вісім запитань, кожне за 0,5 бала. Відповідь одна.</p>
-      <form id="quiz20" onsubmit="return false" novalidate></form>
-      <button type="button" class="btn" id="btn20q">Перевірити відповіді</button>
-      <p class="msg" id="msg20q" role="status"></p>
-      <h3 style="margin-top:34px">Для тих, хто впорався раніше</h3>
-      <ol class="bonus">
-        <li>Додай роботу ще й руки з ліній і маленьких кіл на кінцях. Скільки різних фігур ти використав(ла)?</li>
-        <li>Змін колір усього робота, не створюючи його заново: виділи кілька фігур утримуючи <kbd>Shift</kbd> і задай один колір.</li>
-        <li>Додай у фігуру-рот текст: двічі клацни на ній і введи слово.</li>
-      </ol>
-      <div class="sum" aria-live="polite" style="margin-top:26px">
+    <section id="t20b">
+      <h2>Завдання 2. Палітра з пензлем <span class="pts">7 балів</span></h2>
+      <p class="section-note">Намалюй палітру художника з фарбами й пензлем. Це завдання за підручником (вправа 4.2), але з фігур Canva.</p>
+      <figure class="sample2" style="max-width:260px;margin:6px 0 14px">
+        <svg viewBox="0 0 320 360" role="img" aria-label="Зразок: синя палітра з виїмкою, отвором, чотирма плямами фарби та пензель">
+          <rect width="320" height="360" fill="#fff"/>
+          <g transform="rotate(-30 150 170)"><ellipse cx="150" cy="170" rx="100" ry="125" fill="#1F6FD0"/></g>
+          <path d="M72 262 Q100 244 120 226" stroke="#fff" stroke-width="14" stroke-linecap="round" fill="none"/>
+          <circle cx="206" cy="108" r="11" fill="#fff"/>
+          <g fill="#9A9A9A"><circle cx="124" cy="126" r="24"/><circle cx="180" cy="168" r="24"/><circle cx="118" cy="196" r="24"/><circle cx="172" cy="232" r="24"/></g>
+          <circle cx="119" cy="121" r="22" fill="#D64545"/><circle cx="175" cy="163" r="22" fill="#F3C623"/><circle cx="113" cy="191" r="22" fill="#4FAE5C"/><circle cx="167" cy="227" r="22" fill="#8E4FC4"/>
+          <polygon points="214,332 227,340 296,240 283,231" fill="#8A5A2B"/>
+          <polygon points="283,231 296,240 308,221 295,212" fill="#8EC9F0"/>
+          <path d="M295 212 Q316 184 311 170 Q293 190 295 212 Z" fill="#3A3A3A"/>
+        </svg>
+        <figcaption class="note">Схематичний зразок. Твій малюнок може бути трохи іншим.</figcaption>
+      </figure>
+      <div class="progress"><span id="prog-t20b">Виконано 0 з 13 кроків</span><div class="bar"><i id="bar-t20b"></i></div></div>
+
+      <p class="group">А. Палітра</p>
+      <ul class="steps">
+        <li><label><input type="checkbox" data-step="t20b"><span>Створи новий дизайн <b>1000 × 1200 px</b> (<b>Create a design → Custom size</b>).</span></label></li>
+        <li><label><input type="checkbox" data-step="t20b"><span>Додай коло (<kbd>C</kbd>) і потягни за бічні «таблетки», щоб воно стало вертикальним еліпсом приблизно 700 × 850. Колір — синій.</span></label></li>
+        <li><label><input type="checkbox" data-step="t20b"><span>Поверни еліпс значком повороту приблизно на 30° проти годинникової стрілки.</span></label></li>
+        <li><label><input type="checkbox" data-step="t20b"><span><b>Виїмка.</b> Додай вузький білий прямокутник із заокругленими кутами (<b>Corners</b>), поверни його й постав на край палітри, щоб вийшла виїмка.</span></label></li>
+        <li><label><input type="checkbox" data-step="t20b"><span><b>Отвір для пальця.</b> Невелике біле коло біля краю палітри.</span></label></li>
+      </ul>
+      <p class="group">Б. Фарби</p>
+      <ul class="steps">
+        <li><label><input type="checkbox" data-step="t20b"><span><b>Тіні.</b> Додай сіре коло й скопіюй його тричі: чотири сірих кола на палітрі.</span></label></li>
+        <li><label><input type="checkbox" data-step="t20b"><span><b>Плями фарби.</b> Додай чотири кола трохи меншого розміру: червоне, жовте, зелене й фіолетове. Постав кожне трохи вище й лівіше за свою тінь.</span></label></li>
+        <li><label><input type="checkbox" data-step="t20b"><span><b>Порядок.</b> Плями мають лежати над тінями, а тіні над палітрою. Відкрий <b>Position → Layers</b> і, якщо треба, виправ порядок кнопками <b>Forward</b> або <b>Backward</b>.</span></label></li>
+      </ul>
+      <p class="group">В. Пензель</p>
+      <ul class="steps">
+        <li><label><input type="checkbox" data-step="t20b"><span><b>Ручка.</b> Вузький коричневий прямокутник праворуч від палітри. Поверни його приблизно на 35°.</span></label></li>
+        <li><label><input type="checkbox" data-step="t20b"><span><b>Металева частина.</b> Світло-блакитний прямокутник на кінці ручки, під таким самим кутом.</span></label></li>
+        <li><label><input type="checkbox" data-step="t20b"><span><b>Ворс.</b> Знайди в Elements серед фігур <b>краплю</b> (Teardrops) або трикутник. Зроби її темно-сірою й поверни так, щоб гострий кінець дивився від пензля.</span></label></li>
+      </ul>
+      <p class="group">Г. Групування й збереження</p>
+      <ul class="steps">
+        <li><label><input type="checkbox" data-step="t20b"><span>Виділи палітру разом із виїмкою, отвором, тінями й фарбами (утримуй <kbd>Shift</kbd>) і згрупуй: <kbd>Ctrl</kbd> + <kbd>G</kbd>. Окремо згрупуй пензель.</span></label></li>
+        <li><label><input type="checkbox" data-step="t20b"><span><b>Share → Download</b>, тип <b>PNG</b>, ім’я <b>палітра</b>.</span></label></li>
+      </ul>
+      <details class="hint"><summary>Щось не виходить?</summary><div>
+        <p><b>Тіні й фарби не виділяються.</b> Відкрий <b>Position → Layers</b> і клацни на потрібний елемент у списку.</p>
+        <p><b>Фарба «пірнула» під тінь.</b> Виділи її й натисни <b>Forward</b> або <b>To front</b>.</p>
+        <p><b>Кут повороту не виходить точним.</b> Це не страшно: достатньо приблизно потрібного нахилу.</p>
+      </div></details>
+      <p class="group">Самоперевірка (1 пункт = 1 бал)</p>
+      <ul class="steps" data-crit="t20b">
+        <li><label><input type="checkbox"><span>Дизайн 1000 × 1200 px, палітра — синій еліпс, а не коло, повернутий приблизно на 30°.</span></label></li>
+        <li><label><input type="checkbox"><span>Є виїмка й отвір білого кольору.</span></label></li>
+        <li><label><input type="checkbox"><span>Є чотири сірі тіні.</span></label></li>
+        <li><label><input type="checkbox"><span>Є чотири кольорові плями зі зсувом відносно тіней.</span></label></li>
+        <li><label><input type="checkbox"><span>Пензель складається щонайменше з трьох фігур (ручка, метал, ворс) і повернутий.</span></label></li>
+        <li><label><input type="checkbox"><span>Порядок правильний (фарби над тінями, тіні над палітрою), палітру й пензель згруповано.</span></label></li>
+        <li><label><input type="checkbox"><span>Малюнок завантажено у форматі PNG.</span></label></li>
+      </ul>
+    </section>
+
+    <section id="s20">
+      <div class="sum" aria-live="polite">
         <h3 class="sumName">Мій підсумок</h3>
-        <dl><dt>Завдання 1. Де що в Canva?</dt><dd id="s20a">не перевірено</dd>
-        <dt>Завдання 2. Робот із фігур</dt><dd id="s20b">0 з 6</dd>
-        <dt>Тест</dt><dd id="s20t">не пройдено</dd>
+        <dl><dt>Завдання 1. Робот</dt><dd id="s20a">0 з 5</dd>
+        <dt>Завдання 2. Палітра з пензлем</dt><dd id="s20b">0 з 7</dd>
         <dt>Разом</dt><dd class="total" id="s20T">0 з 12</dd></dl>
-        <p class="small">Покажи цей підсумок і свій файл учителю. Остаточну оцінку виставляє вчитель.</p>
+        <p class="small">Покажи вчителю файли робот.png і палітра.png разом із цим підсумком. Остаточну оцінку виставляє вчитель.</p>
       </div>
+      <h3 style="margin-top:26px">Для тих, хто впорався раніше</h3>
+      <ol class="bonus">
+        <li>Додай роботові руки з ліній і маленьких кіл на кінцях.</li>
+        <li>Зміни колір усього робота, не створюючи його заново: виділи кілька фігур утримуючи <kbd>Shift</kbd> і задай один колір.</li>
+        <li>Намалюй на палітрі ще дві фарби й тіні до них.</li>
+      </ol>
     </section>
   </div>
 
   <!-- ===================== LESSON 21 ===================== -->
   <div class="panel" id="p21" role="tabpanel" aria-labelledby="tab21" hidden>
     <ol class="timeline" aria-label="План уроку 21">
-      <li style="flex:10"><a href="#t21"><b>Теорія</b><span>10 хв</span></a></li>
-      <li style="flex:5"><a href="#z21a"><b>Завдання 1</b><span>5 хв</span></a></li>
-      <li style="flex:20"><a href="#z21b"><b>Завдання 2</b><span>20 хв</span></a></li>
-      <li style="flex:7"><a href="#q21"><b>Тест і підсумок</b><span>7 хв</span></a></li>
+      <li style="flex:5"><a href="#m21"><b>Пам’ятка</b><span>5 хв</span></a></li>
+      <li style="flex:15"><a href="#t21a"><b>Автобус</b><span>15 хв</span></a></li>
+      <li style="flex:22"><a href="#t21b"><b>Ракета в космосі</b><span>22 хв</span></a></li>
+      <li style="flex:3"><a href="#s21"><b>Підсумок</b><span>3 хв</span></a></li>
     </ol>
-    <p class="note" style="margin-top:8px">Урок триває 45 хвилин, із них 3 хвилини займає інструктаж з БЖД на початку.</p>
+    <p class="note" style="margin-top:8px">До 45 хвилин входять 3 хвилини інструктажу з БЖД на початку.</p>
 
-    <section id="t21" class="first">
-      <h2>Теорія</h2>
-      <h3>Елементи лежать у шарах</h3>
-      <p>Уяви стос прозорих плівок. Кожен елемент у Canva лежить у власному <mark>шарі</mark>. Шари, які ближче до глядача (<b>передній план</b>), закривають ті, що позаду (<b>задній план</b>). Тому порядок елементів дуже важливий: сонце, намальоване «після» будинку, закриє його, а намальоване раніше — сховається за стінами.</p>
-
-      <h3>Порядок і панель шарів</h3>
-      <p>Виділи елемент і натисни <b>Position</b> (Позиція) над полотном. Там є:</p>
-      <div class="tools">
-        <div class="tool"><b>Forward</b>Підняти елемент на один шар вище.</div>
-        <div class="tool"><b>Backward</b>Опустити елемент на один шар нижче.</div>
-        <div class="tool"><b>To front</b>На самий передній план.</div>
-        <div class="tool"><b>To back</b>На самий задній план.</div>
-      </div>
-      <p>На вкладці <b>Layers</b> у цьому ж меню видно всі елементи сторінки у вигляді списку: можна клацнути на потрібний, навіть якщо він прихований під іншими. У списку видно самі елементи, а не підписані шари, тому порядок краще контролювати групуванням і замком.</p>
-
-      <h3>Спробуй сам(а): порядок шарів</h3>
-      <p>Це модель шарів. Клацни на рядок, щоб вибрати шар, і користуйся кнопками порядку. Повзунок змінює прозорість вибраного шару.</p>
-      <div class="simwrap">
-        <svg class="prev" id="simPrev21" viewBox="0 0 320 200" role="img" aria-label="Попередній перегляд шарів"></svg>
-        <div class="lst" id="simList21" aria-label="Шари"></div>
-      </div>
-
-      <h3>Групування</h3>
-      <p>Щоб кілька фігур поводилися як одна, їх <mark>групують</mark>. Утримуй <kbd>Shift</kbd> і клацай на потрібних елементах (або обведи їх рамкою), потім натисни <b>Group</b> на плаваючій панелі чи <kbd>Ctrl</kbd> + <kbd>G</kbd>. Згруповані фігури разом переміщують і змінюють за розміром. Щоб розділити їх, виділи групу й натисни <b>Ungroup</b>. Клацнувши на групі ще раз, можна змінювати окремий елемент усередині.</p>
-      <div class="grpwrap">
-        <svg viewBox="0 0 320 160" id="grpSvg" role="img" aria-label="Будинок із трьох фігур"></svg>
-        <div>
-          <p style="margin:0 0 8px"><b>Будинок</b> складається з трьох фігур. Спробуй пересунути дах:</p>
-          <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <button type="button" class="btn small" id="grpMove">Пересунути дах праворуч</button>
-            <button type="button" class="btn small" id="grpToggle" style="background:transparent;color:var(--accent);border:1.5px solid var(--accent)">Згрупувати</button>
-            <button type="button" class="btn small" id="grpReset" style="background:transparent;color:var(--accent);border:1.5px solid var(--accent)">Спочатку</button>
-          </div>
-          <p class="note" id="grpNote" style="margin-top:8px">Фігури не згруповано: рухається тільки дах.</p>
-        </div>
-      </div>
-
-      <h3>Вирівнювання і блокування</h3>
-      <ul>
-        <li><b>Align (вирівнювання).</b> У <b>Position</b> можна вирівняти вибрані елементи між собою або по сторінці: по лівому краю, по центру, по верху тощо.</li>
-        <li><b>Lock.</b> Значок замка на панелі захищає елемент від випадкового переміщення. Зручно заблокувати тло, коли воно вже готове.</li>
-        <li><b>Transparency.</b> Зменшує прозорість елемента, тому крізь нього видно шари нижче.</li>
-      </ul>
-
-      <div class="remember">
-        <h3>Запам’ятай</h3>
-        <ul>
-          <li>Елементи лежать у шарах: верхні закривають нижні.</li>
-          <li>Порядок міняють у <b>Position</b>: <b>Forward</b>, <b>Backward</b>, <b>To front</b>, <b>To back</b>.</li>
-          <li>Групують виділені фігури через <kbd>Ctrl</kbd> + <kbd>G</kbd>; розгруповують кнопкою <b>Ungroup</b>.</li>
-          <li>Замок захищає елемент від випадкових змін.</li>
-        </ul>
+    <section id="m21" class="first">
+      <h2>Пам’ятка: шари й групування</h2>
+      <p>Кожен елемент у Canva лежить у власному <mark>шарі</mark>, як на стосі прозорих плівок: шар, що лежить вище, закриває те, що під ним. Тому в багатошаровому малюнку порядок елементів вирішує, що буде видно.</p>
+      <div class="tscroll">
+      <table class="data">
+        <tr><th>Що зробити</th><th>Як</th></tr>
+        <tr><td>Підняти або опустити елемент</td><td><b>Position</b> → <b>Forward</b> (на шар вище), <b>Backward</b> (на шар нижче), <b>To front</b> (на передній план), <b>To back</b> (на задній план)</td></tr>
+        <tr><td>Побачити список усіх елементів</td><td><b>Position → Layers</b>. Клацни на елемент у списку, щоб виділити його, навіть якщо він під іншими</td></tr>
+        <tr><td>Виділити кілька елементів</td><td>Клацати, утримуючи <kbd>Shift</kbd>, або обвести їх рамкою</td></tr>
+        <tr><td>Згрупувати</td><td><kbd>Ctrl</kbd> + <kbd>G</kbd> або кнопка <b>Group</b>. Група рухається як один елемент</td></tr>
+        <tr><td>Розгрупувати, вибрати частину групи</td><td>Кнопка <b>Ungroup</b>; або клацни на групі ще раз і вибери окремий елемент</td></tr>
+        <tr><td>Вирівняти елементи</td><td><b>Position → Align</b> (по краю, по центру)</td></tr>
+        <tr><td>Захистити від випадкового руху</td><td>Значок замка (<b>Lock</b>)</td></tr>
+        <tr><td>Зробити напівпрозорим</td><td><b>Transparency</b></td></tr>
+      </table>
       </div>
     </section>
 
-    <section id="z21a">
-      <h2>Завдання 1. Шари на практиці <span class="pts">3 бали</span></h2>
-      <p class="section-note">Повернись до моделі шарів вище. Виконай завдання в моделі й натисни «Перевірити».</p>
-      <ul class="chk" id="tasks21">
-        <li data-t="front"><span class="t">Зроби так, щоб <b>Сонце</b> було перед <b>Будинком</b>.</span><span class="st"></span><button type="button" class="btn ghost small">Перевірити</button></li>
-        <li data-t="back"><span class="t">Постав <b>Будинок</b> на самий задній план (кнопка <b>To back</b>).</span><span class="st"></span><button type="button" class="btn ghost small">Перевірити</button></li>
-        <li data-t="opac"><span class="t">Зроби шар <b>Сонце</b> напівпрозорим: непрозорість <b>50 % або менше</b>.</span><span class="st"></span><button type="button" class="btn ghost small">Перевірити</button></li>
-      </ul>
-    </section>
-
-    <section id="z21b">
-      <h2>Завдання 2. Автобус із фігур <span class="pts">5 балів</span></h2>
-      <p class="section-note">Створи в Canva автобус на дорозі. Для порядку шарів і групування це зручний приклад.</p>
-      <div class="sample2" style="max-width:340px;margin:10px 0 16px">
+    <section id="t21a">
+      <h2>Завдання 1. Автобус на дорозі <span class="pts">5 балів</span></h2>
+      <p class="section-note">Автобус складається з багатьох фігур. Якщо їх згрупувати, його легко перемістити.</p>
+      <figure class="sample2" style="max-width:340px;margin:6px 0 14px">
         <svg viewBox="0 0 340 200" role="img" aria-label="Зразок: жовтий автобус на дорозі">
           <rect width="340" height="200" fill="#fff"/>
           <rect y="150" width="340" height="50" fill="#6B7280"/>
@@ -515,238 +395,248 @@ footer{margin-top:40px;color:var(--ink-soft);font-size:14px}
           <rect x="30" y="60" width="280" height="90" rx="22" fill="#F5C518" stroke="#7a5d00" stroke-width="4"/>
           <rect x="52" y="80" width="46" height="34" rx="4" fill="#BFE3FF"/><rect x="108" y="80" width="46" height="34" rx="4" fill="#BFE3FF"/><rect x="164" y="80" width="46" height="34" rx="4" fill="#BFE3FF"/><rect x="220" y="80" width="46" height="34" rx="4" fill="#BFE3FF"/>
         </svg>
-        <p class="note" style="margin-top:6px">Зразок. Автобус може бути іншого кольору.</p>
-      </div>
-      <div class="progress"><span id="prog21">Виконано 0 з 12 кроків</span><div class="bar"><i id="bar21"></i></div></div>
-
-      <p class="group">А. Підготовка і корпус</p>
+        <figcaption class="note">Зразок. Автобус може бути іншого кольору.</figcaption>
+      </figure>
+      <div class="progress"><span id="prog-t21a">Виконано 0 з 8 кроків</span><div class="bar"><i id="bar-t21a"></i></div></div>
       <ul class="steps">
-        <li><label><input type="checkbox" data-step="21"><span>Створи дизайн: <b>Create a design → Custom size</b>, <b>1000 × 600 px</b>.</span></label></li>
-        <li><label><input type="checkbox" data-step="21"><span>Додай <b>прямокутник</b>-корпус: жовтий колір, заокруглені кути (<b>Corners</b>), темний контур.</span></label></li>
+        <li><label><input type="checkbox" data-step="t21a"><span>Створи дизайн <b>1000 × 600 px</b>.</span></label></li>
+        <li><label><input type="checkbox" data-step="t21a"><span><b>Корпус.</b> Жовтий прямокутник із заокругленими кутами й темним контуром.</span></label></li>
+        <li><label><input type="checkbox" data-step="t21a"><span><b>Вікна.</b> Додай одне світло-блакитне вікно, скопіюй його тричі й розстав чотири вікна в ряд.</span></label></li>
+        <li><label><input type="checkbox" data-step="t21a"><span>Виділи чотири вікна (<kbd>Shift</kbd> + клацання), вирівняй їх по верху (<b>Position → Align</b>) і згрупуй (<kbd>Ctrl</kbd> + <kbd>G</kbd>).</span></label></li>
+        <li><label><input type="checkbox" data-step="t21a"><span><b>Колесо.</b> Чорне коло, а на ньому менше сіре. Згрупуй, скопіюй і розстав два колеса внизу корпуса.</span></label></li>
+        <li><label><input type="checkbox" data-step="t21a"><span>Виділи кожне колесо й натискай <b>Position → Backward</b>, доки корпус не закриє верхню частину колеса.</span></label></li>
+        <li><label><input type="checkbox" data-step="t21a"><span><b>Дорога.</b> Довгий сірий прямокутник унизу: <b>To back</b>, потім заблокуй його значком замка.</span></label></li>
+        <li><label><input type="checkbox" data-step="t21a"><span>Згрупуй весь автобус (не дорогу), пересунь його по дорозі й збережи <b>PNG</b> під назвою <b>автобус</b>.</span></label></li>
       </ul>
-      <p class="group">Б. Вікна</p>
-      <ul class="steps">
-        <li><label><input type="checkbox" data-step="21"><span>Додай один світло-блакитний прямокутник-вікно й скопіюй його три рази (<kbd>Ctrl</kbd> + <kbd>C</kbd>, <kbd>Ctrl</kbd> + <kbd>V</kbd>). Розстав чотири вікна в ряд.</span></label></li>
-        <li><label><input type="checkbox" data-step="21"><span>Виділи всі чотири вікна, утримуючи <kbd>Shift</kbd>. У <b>Position</b> вирівняй їх по верху (<b>Align</b>).</span></label></li>
-        <li><label><input type="checkbox" data-step="21"><span>Згрупуй вікна: <kbd>Ctrl</kbd> + <kbd>G</kbd>.</span></label></li>
-      </ul>
-      <p class="group">В. Колеса</p>
-      <ul class="steps">
-        <li><label><input type="checkbox" data-step="21"><span>Додай чорне коло, а на ньому менше сіре. Згрупуй їх — це колесо. Скопіюй колесо й розстав два колеса внизу корпуса.</span></label></li>
-        <li><label><input type="checkbox" data-step="21"><span>Колеса мають виглядати «за» корпусом: виділи кожне й у <b>Position</b> натисни <b>Backward</b>, поки корпус не закриє верхню частину колеса.</span></label></li>
-      </ul>
-      <p class="group">Г. Дорога</p>
-      <ul class="steps">
-        <li><label><input type="checkbox" data-step="21"><span>Додай довгий сірий прямокутник-дорогу внизу сторінки й натисни для нього <b>To back</b>.</span></label></li>
-        <li><label><input type="checkbox" data-step="21"><span>Заблокуй дорогу значком замка, щоб випадково її не зсунути.</span></label></li>
-      </ul>
-      <p class="group">Д. Усе разом</p>
-      <ul class="steps">
-        <li><label><input type="checkbox" data-step="21"><span>Виділи корпус, вікна та колеса (але не дорогу) і згрупуй. Перемісти автобус по дорозі.</span></label></li>
-        <li><label><input type="checkbox" data-step="21"><span>Відкрий <b>Position → Layers</b> і подивись, які елементи з’явились у списку.</span></label></li>
-        <li><label><input type="checkbox" data-step="21"><span><b>Share → Download</b>, тип <b>PNG</b>, ім’я <b>автобус</b>.</span></label></li>
-      </ul>
-      <details class="hint"><summary>Щось не виходить?</summary><div>
-        <p><b>Не виділяється потрібна фігура.</b> Відкрий <b>Position → Layers</b> і клацни на неї в списку.</p>
-        <p><b>Усе рухається разом.</b> Це означає, що фігури згруповано. Клацни на групі ще раз, щоб вибрати окремий елемент, або натисни <b>Ungroup</b>.</p>
-        <p><b>Колесо поверх корпусу.</b> Виділи колесо й натисни <b>Backward</b> або <b>To back</b>.</p>
-      </div></details>
-      <h3>Самоперевірка завдання 2</h3>
-      <p class="note">Постав галочку біля кожного виконаного пункту. Один пункт — 1 бал.</p>
-      <ul class="steps" data-crit="21">
+      <p class="group">Самоперевірка (1 пункт = 1 бал)</p>
+      <ul class="steps" data-crit="t21a">
         <li><label><input type="checkbox"><span>Дизайн 1000 × 600 px, корпус має колір, заокруглені кути й контур.</span></label></li>
-        <li><label><input type="checkbox"><span>Чотири однакові вікна розставлено в ряд, вирівняно й згруповано.</span></label></li>
+        <li><label><input type="checkbox"><span>Чотири однакові вікна в ряд, вирівняні та згруповані.</span></label></li>
         <li><label><input type="checkbox"><span>Колеса складаються з двох кіл, згруповані й розташовані за корпусом.</span></label></li>
         <li><label><input type="checkbox"><span>Дорога лежить на задньому плані й заблокована.</span></label></li>
-        <li><label><input type="checkbox"><span>Автобус згруповано, його можна пересунути, а файл PNG завантажено.</span></label></li>
+        <li><label><input type="checkbox"><span>Автобус згруповано й збережено у форматі PNG.</span></label></li>
       </ul>
     </section>
 
-    <section id="q21">
-      <h2>Тест <span class="pts">4 бали</span></h2>
-      <p class="section-note">Вісім запитань, кожне за 0,5 бала. Відповідь одна.</p>
-      <form id="quiz21" onsubmit="return false" novalidate></form>
-      <button type="button" class="btn" id="btn21q">Перевірити відповіді</button>
-      <p class="msg" id="msg21q" role="status"></p>
-      <h3 style="margin-top:34px">Для тих, хто впорався раніше</h3>
-      <ol class="bonus">
-        <li>Додай до автобуса фари й двері. Чи треба їх групувати з корпусом? Поясни.</li>
-        <li>Створи другий автобус іншого кольору, скопіювавши групу. Чи довелося щось перемальовувати?</li>
-        <li>Додай хмарки з кількох кіл, згрупуй їх і зроби напівпрозорими.</li>
-      </ol>
-      <div class="sum" aria-live="polite" style="margin-top:26px">
+    <section id="t21b">
+      <h2>Завдання 2. Ракета в космосі <span class="pts">7 балів</span></h2>
+      <p class="section-note">Багатошаровий малюнок: фон, зірки, планета, ракета й полум’я. Порядок елементів тут особливо важливий.</p>
+      <figure class="sample2" style="max-width:300px;margin:6px 0 14px">
+        <svg viewBox="0 0 300 300" role="img" aria-label="Зразок: ракета біля планети з кільцем на зоряному небі">
+          <rect width="300" height="300" fill="#0B1D3F"/>
+          <g fill="#fff" opacity=".85"><circle cx="30" cy="30" r="2.5"/><circle cx="90" cy="50" r="2"/><circle cx="150" cy="20" r="3"/><circle cx="260" cy="40" r="2.5"/><circle cx="40" cy="120" r="2"/><circle cx="270" cy="150" r="2"/><circle cx="130" cy="110" r="2"/><circle cx="20" cy="190" r="2.5"/><circle cx="280" cy="260" r="2"/><circle cx="170" cy="270" r="2.5"/></g>
+          <ellipse cx="80" cy="222" rx="86" ry="20" fill="#F3C623" transform="rotate(-18 80 222)"/>
+          <circle cx="80" cy="222" r="52" fill="#E8743B"/>
+          <g transform="rotate(20 210 130)">
+            <polygon points="180,150 150,205 188,188" fill="#D64545"/><polygon points="240,150 270,205 232,188" fill="#D64545"/>
+            <polygon points="196,190 224,190 210,244" fill="#F5A623" opacity=".8"/>
+            <ellipse cx="210" cy="125" rx="32" ry="68" fill="#E5E9F0"/>
+            <polygon points="210,52 190,92 230,92" fill="#D64545"/>
+            <circle cx="210" cy="124" r="14" fill="#7FC4FF" stroke="#4A5668" stroke-width="4"/>
+          </g>
+        </svg>
+        <figcaption class="note">Зразок. Кількість зірок і кольори можуть бути іншими.</figcaption>
+      </figure>
+      <div class="progress"><span id="prog-t21b">Виконано 0 з 14 кроків</span><div class="bar"><i id="bar-t21b"></i></div></div>
+
+      <p class="group">А. Фон і зірки</p>
+      <ul class="steps">
+        <li><label><input type="checkbox" data-step="t21b"><span>Створи дизайн <b>1000 × 1000 px</b>.</span></label></li>
+        <li><label><input type="checkbox" data-step="t21b"><span>Додай прямокутник на всю сторінку, колір — темно-синій. Натисни <b>To back</b> і заблокуй його замком.</span></label></li>
+        <li><label><input type="checkbox" data-step="t21b"><span>Додай маленьку білу зірку (<b>Elements → Shapes → Stars</b>) або коло. Скопіюй приблизно десять разів і розстав різного розміру.</span></label></li>
+        <li><label><input type="checkbox" data-step="t21b"><span>Виділи всі зірки й згрупуй (<kbd>Ctrl</kbd> + <kbd>G</kbd>). Зроби групу напівпрозорою: повзунок <b>Transparency</b> приблизно на 70.</span></label></li>
+      </ul>
+      <p class="group">Б. Планета з кільцем</p>
+      <ul class="steps">
+        <li><label><input type="checkbox" data-step="t21b"><span>Додай велике помаранчеве коло: це планета.</span></label></li>
+        <li><label><input type="checkbox" data-step="t21b"><span>Додай ще одне коло, розтягни його бічними «таблетками» в довгий еліпс, зроби жовтим і поверни на 15–20°. Це кільце.</span></label></li>
+        <li><label><input type="checkbox" data-step="t21b"><span>Натисни для кільця <b>Backward</b> стільки разів, щоб воно опинилось <b>за</b> планетою, а виступали тільки краї.</span></label></li>
+      </ul>
+      <p class="group">В. Ракета</p>
+      <ul class="steps">
+        <li><label><input type="checkbox" data-step="t21b"><span><b>Корпус.</b> Вертикальний світло-сірий еліпс (з кола, потягнувши за бічні «таблетки»).</span></label></li>
+        <li><label><input type="checkbox" data-step="t21b"><span><b>Носик і крила.</b> Червоний трикутник зверху корпусу. Ще два червоні трикутники по боках; їх треба опустити <b>Backward</b>, щоб вони виглядали «за» корпусом.</span></label></li>
+        <li><label><input type="checkbox" data-step="t21b"><span><b>Ілюмінатор.</b> Блакитне коло з контуром посередині корпусу.</span></label></li>
+        <li><label><input type="checkbox" data-step="t21b"><span>Згрупуй усі частини ракети й поверни групу приблизно на 20°.</span></label></li>
+      </ul>
+      <p class="group">Г. Полум’я й перевірка</p>
+      <ul class="steps">
+        <li><label><input type="checkbox" data-step="t21b"><span>Під ракетою додай помаранчевий трикутник або краплю — полум’я. Зроби його напівпрозорим (<b>Transparency</b> приблизно 70) і опусти його <b>Backward</b> так, щоб воно було <b>за</b> ракетою.</span></label></li>
+        <li><label><input type="checkbox" data-step="t21b"><span>Відкрий <b>Position → Layers</b> і переконайся, що порядок правильний: фон і зірки внизу, потім кільце, планета, полум’я й ракета.</span></label></li>
+        <li><label><input type="checkbox" data-step="t21b"><span><b>Share → Download</b>, тип <b>PNG</b>, ім’я <b>ракета</b>.</span></label></li>
+      </ul>
+      <details class="hint"><summary>Щось не виходить?</summary><div>
+        <p><b>Кільце лежить поверх планети.</b> Виділи кільце (якщо не виходить — через <b>Position → Layers</b>) і натискай <b>Backward</b>.</p>
+        <p><b>Усе рухається разом.</b> Клацни на групі ще раз, щоб вибрати окремий елемент, або натисни <b>Ungroup</b>.</p>
+        <p><b>Фон заважає виділяти.</b> Він заблокований, і це правильно: клацай на інші елементи або вибирай їх у <b>Layers</b>.</p>
+      </div></details>
+      <p class="group">Самоперевірка (1 пункт = 1 бал)</p>
+      <ul class="steps" data-crit="t21b">
+        <li><label><input type="checkbox"><span>Фон лежить на задньому плані, заблокований.</span></label></li>
+        <li><label><input type="checkbox"><span>Не менше восьми зірок, згрупованих і напівпрозорих.</span></label></li>
+        <li><label><input type="checkbox"><span>Планета з кільцем: кільце лежить за планетою.</span></label></li>
+        <li><label><input type="checkbox"><span>Ракета з щонайменше п’яти фігур, крила за корпусом, усе згруповано.</span></label></li>
+        <li><label><input type="checkbox"><span>Полум’я напівпрозоре й лежить за ракетою.</span></label></li>
+        <li><label><input type="checkbox"><span>У списку Layers порядок правильний: нічого не закрито не так, як треба.</span></label></li>
+        <li><label><input type="checkbox"><span>Малюнок завантажено у форматі PNG.</span></label></li>
+      </ul>
+    </section>
+
+    <section id="s21">
+      <div class="sum" aria-live="polite">
         <h3 class="sumName">Мій підсумок</h3>
-        <dl><dt>Завдання 1. Шари на практиці</dt><dd id="s21a">0 з 3</dd>
-        <dt>Завдання 2. Автобус із фігур</dt><dd id="s21b">0 з 5</dd>
-        <dt>Тест</dt><dd id="s21t">не пройдено</dd>
+        <dl><dt>Завдання 1. Автобус на дорозі</dt><dd id="s21a">0 з 5</dd>
+        <dt>Завдання 2. Ракета в космосі</dt><dd id="s21b">0 з 7</dd>
         <dt>Разом</dt><dd class="total" id="s21T">0 з 12</dd></dl>
-        <p class="small">Покажи цей підсумок і свій файл учителю. Остаточну оцінку виставляє вчитель.</p>
+        <p class="small">Покажи вчителю файли автобус.png і ракета.png разом із цим підсумком. Остаточну оцінку виставляє вчитель.</p>
       </div>
+      <h3 style="margin-top:26px">Для тих, хто впорався раніше</h3>
+      <ol class="bonus">
+        <li>Додай ракеті другу планету й супутник. Постав їх так, щоб ракета пролітала перед однією з них.</li>
+        <li>Скопіюй групу ракети, зроби копію меншою й іншого кольору. Чи треба щось перемальовувати?</li>
+        <li>Додай до автобуса фари й двері. Чи треба їх групувати з корпусом? Поясни.</li>
+      </ol>
     </section>
   </div>
 
   <!-- ===================== LESSON 22 ===================== -->
   <div class="panel" id="p22" role="tabpanel" aria-labelledby="tab22" hidden>
     <ol class="timeline" aria-label="План уроку 22">
-      <li style="flex:10"><a href="#t22"><b>Теорія</b><span>10 хв</span></a></li>
-      <li style="flex:5"><a href="#z22a"><b>Завдання 1</b><span>5 хв</span></a></li>
-      <li style="flex:20"><a href="#z22b"><b>Завдання 2</b><span>20 хв</span></a></li>
-      <li style="flex:7"><a href="#q22"><b>Тест і підсумок</b><span>7 хв</span></a></li>
+      <li style="flex:5"><a href="#m22"><b>Пам’ятка</b><span>5 хв</span></a></li>
+      <li style="flex:16"><a href="#t22a"><b>Емблема класу</b><span>16 хв</span></a></li>
+      <li style="flex:21"><a href="#t22b"><b>Парусник</b><span>21 хв</span></a></li>
+      <li style="flex:3"><a href="#s22"><b>Підсумок</b><span>3 хв</span></a></li>
     </ol>
-    <p class="note" style="margin-top:8px">Урок триває 45 хвилин, із них 3 хвилини займає інструктаж з БЖД на початку.</p>
+    <p class="note" style="margin-top:8px">До 45 хвилин входять 3 хвилини інструктажу з БЖД на початку.</p>
 
-    <section id="t22" class="first">
-      <h2>Теорія</h2>
-      <h3>Лінії</h3>
-      <p>Лінії додають через <b>Elements → Shapes → Lines</b> або натисканням клавіші <kbd>L</kbd>. Є <b>прямі</b>, <b>криві</b> та <b>ламані</b> (коліна) лінії. Для лінії можна змінити колір, товщину, стиль (суцільна чи пунктирна), прозорість і кінці, наприклад зробити стрілку. Щоб пряма вийшла рівною, тримай <kbd>Shift</kbd>.</p>
-      <p>Крива лінія має маркер, за який її згинають. Спробуй на моделі: перетягни жовту точку.</p>
-      <div class="bez">
-        <svg id="qSvg" viewBox="0 0 360 200" role="img" aria-label="Крива лінія з маркером">
-          <path class="curve" id="qPath" d=""/><line class="guide" id="qg1" x1="0" y1="0" x2="0" y2="0"/><line class="guide" id="qg2" x1="0" y1="0" x2="0" y2="0"/>
-          <circle class="handle" id="qh" r="10" tabindex="0" aria-label="Маркер кривої"/>
-          <rect class="node" id="qa" width="16" height="16"/><rect class="node" id="qb" width="16" height="16"/>
-        </svg>
-        <div class="code" id="qCode" aria-live="polite"></div>
-      </div>
-
-      <h3>Малювання (Draw)</h3>
-      <p>На бічній панелі відкрий <b>Draw</b>. Є <b>Pen</b> (перо), <b>Marker</b> (маркер), <b>Highlighter</b> (текстовиділювач) і <b>Eraser</b> (гумка). Для кожного можна вибрати колір, товщину й прозорість. Функція <mark>Shape Assist</mark> перетворює намальовану від руки фігуру на рівну: накресли, наприклад, коло чи зірку й <b>затримай перо на 1 секунду</b>. Працює для прямокутників, стрілок, трикутників, кіл, зірок, ліній, сердець і ромбів.</p>
-
-      <h3>Готова графіка</h3>
-      <p>В <b>Elements → Graphics</b> знаходять готові малюнки: зірки, книги, глобуси. Їх можна збільшувати й перефарбовувати через <b>Colour</b>. Елементи з позначкою корони доступні лише на платних тарифах, а в Canva for Education вони відкриті. Завантажений SVG-елемент можна змінювати за розміром і кольором, але не за контуром чи кутами.</p>
-
-      <h3>Растр чи вектор у Canva</h3>
+    <section id="m22" class="first">
+      <h2>Пам’ятка: лінії, малювання, графіка, збереження</h2>
       <div class="tscroll">
       <table class="data">
-        <tr><th>Що</th><th>Вид графіки</th><th>Що буде при сильному збільшенні</th></tr>
-        <tr><td>Фігури, лінії, графіка з Elements</td><td>Векторні</td><td>Лишаються чіткими</td></tr>
-        <tr><td>Фото, завантажене з комп’ютера (Uploads)</td><td>Растрове</td><td>З’являються квадратики-піксели</td></tr>
+        <tr><th>Що зробити</th><th>Як</th></tr>
+        <tr><td>Додати лінію</td><td><kbd>L</kbd> або <b>Elements → Shapes → Lines</b>. Є прямі, криві та ламані</td></tr>
+        <tr><td>Зробити лінію кривою, зігнути</td><td>На панелі над полотном вибери тип лінії; потягни за маркер на лінії</td></tr>
+        <tr><td>Колір, товщина, стиль лінії</td><td>Панель над полотном (колір, товщина, суцільна чи пунктирна)</td></tr>
+        <tr><td>Намалювати від руки</td><td><b>Draw</b> на бічній панелі: <b>Pen</b>, <b>Marker</b>, <b>Highlighter</b>, <b>Eraser</b></td></tr>
+        <tr><td>Вирівняти намальовану фігуру</td><td><b>Shape Assist</b>: накресли фігуру (коло, зірку, трикутник, стрілку, серце) і затримай перо на 1 секунду</td></tr>
+        <tr><td>Готова графіка</td><td><b>Elements → Graphics</b>; колір змінюють через <b>Colour</b>. Елементи з короною платні, в Education вони відкриті</td></tr>
+        <tr><td>Зберегти</td><td><b>Share → Download</b>. <b>PNG</b>, <b>JPG</b>, <b>PDF</b> є завжди. <b>SVG</b> (векторний файл) — на Education і платних тарифах</td></tr>
       </table>
       </div>
-
-      <h3>Збереження</h3>
-      <p>Натисни <b>Share → Download</b> і вибери тип файлу.</p>
-      <div class="tscroll">
-      <table class="data">
-        <tr><th>Тип</th><th>Що це</th><th>Тарифи</th></tr>
-        <tr><td><b>PNG</b></td><td>Растровий файл без втрат якості</td><td>Усі</td></tr>
-        <tr><td><b>JPG</b></td><td>Растровий файл, менший за розміром</td><td>Усі</td></tr>
-        <tr><td><b>PDF</b></td><td>Документ для перегляду й друку</td><td>Усі</td></tr>
-        <tr><td><b>SVG</b></td><td>Векторний файл</td><td>Лише Pro, Teams, Business, Nonprofits та <b>Education</b></td></tr>
-      </table>
-      </div>
-      <p class="note">Якщо на твоєму тарифі немає SVG, збережи роботу як PNG і PDF.</p>
-
-      <div class="remember">
-        <h3>Запам’ятай</h3>
-        <ul>
-          <li>Лінії бувають прямі, криві й ламані; їх додають клавішею <kbd>L</kbd>.</li>
-          <li><b>Draw</b> дозволяє малювати від руки, а <b>Shape Assist</b> вирівнює фігури.</li>
-          <li>Фігури та графіка векторні, а завантажені фото растрові.</li>
-          <li>SVG — векторний формат (потрібен Education або платний тариф), а PNG, JPG — растрові.</li>
-        </ul>
-      </div>
+      <p class="note">Растр чи вектор: фото, завантажене з комп’ютера (Uploads), — растрове й при збільшенні «розсипається» на піксели. Фігури, лінії й графіка з Elements — векторні й лишаються чіткими.</p>
     </section>
 
-    <section id="z22a">
-      <h2>Завдання 1. Растрове чи векторне? <span class="pts">2 бали</span></h2>
-      <p class="section-note">Для кожного пункту вибери вид графіки й натисни «Перевірити».</p>
-      <ul class="sort" id="sort22"></ul>
-      <button type="button" class="btn" id="btn22a">Перевірити</button>
-      <p class="msg" id="msg22a" role="status"></p>
-    </section>
-
-    <section id="z22b">
-      <h2>Завдання 2. Емблема класу <span class="pts">6 балів</span></h2>
-      <p class="section-note">Створи в Canva емблему вашого класу з фігур, ліній і готової графіки.</p>
-      <div class="sample2" style="max-width:240px;margin:10px 0 16px">
+    <section id="t22a">
+      <h2>Завдання 1. Емблема класу <span class="pts">6 балів</span></h2>
+      <p class="section-note">Створи емблему вашого класу з фігур, лінії, готової графіки й малюнка від руки.</p>
+      <figure class="sample2" style="max-width:230px;margin:6px 0 14px">
         <svg viewBox="0 0 240 240" role="img" aria-label="Зразок: кругла емблема із зіркою і хвилею">
           <rect width="240" height="240" fill="#fff"/>
           <circle cx="120" cy="120" r="100" fill="#2E6FD0" stroke="#173B73" stroke-width="8"/>
           <polygon points="120,48 136,92 184,92 146,120 160,166 120,138 80,166 94,120 56,92 104,92" fill="#FFC93C" stroke="#8A5A00" stroke-width="3"/>
           <path d="M44 178 C74 156 104 200 134 178 C164 156 184 190 200 176" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
         </svg>
-        <p class="note" style="margin-top:6px">Зразок. Ваша емблема може бути іншою.</p>
-      </div>
-      <div class="progress"><span id="prog22">Виконано 0 з 12 кроків</span><div class="bar"><i id="bar22"></i></div></div>
-
-      <p class="group">А. Основа</p>
+        <figcaption class="note">Зразок. Ваша емблема може бути іншою.</figcaption>
+      </figure>
+      <div class="progress"><span id="prog-t22a">Виконано 0 з 9 кроків</span><div class="bar"><i id="bar-t22a"></i></div></div>
       <ul class="steps">
-        <li><label><input type="checkbox" data-step="22"><span>Створи дизайн: <b>Create a design → Custom size</b>, <b>1000 × 1000 px</b>.</span></label></li>
-        <li><label><input type="checkbox" data-step="22"><span>Додай велике <b>коло</b> (<kbd>C</kbd>) на всю сторінку, задай колір заливки й товсту рамку.</span></label></li>
+        <li><label><input type="checkbox" data-step="t22a"><span>Створи дизайн <b>1000 × 1000 px</b>.</span></label></li>
+        <li><label><input type="checkbox" data-step="t22a"><span>Додай велике <b>коло</b> (<kbd>C</kbd>) на всю сторінку, задай колір заливки й товсту рамку (<b>Stroke style</b>).</span></label></li>
+        <li><label><input type="checkbox" data-step="t22a"><span>Відкрий <b>Elements → Graphics</b>, знайди зірку (або книгу чи глобус), додай у центр кола.</span></label></li>
+        <li><label><input type="checkbox" data-step="t22a"><span>Зміни розмір графіки білими кружечками на кутах, а колір — через <b>Colour</b>.</span></label></li>
+        <li><label><input type="checkbox" data-step="t22a"><span>Натисни <kbd>L</kbd>, додай лінію й зроби її <b>кривою</b>. Зігни за маркер у вигляді хвилі, задай білий колір і товщину близько 10.</span></label></li>
+        <li><label><input type="checkbox" data-step="t22a"><span>Відкрий <b>Draw</b>, вибери <b>Pen</b> і намалюй від руки маленьку зірочку чи сердечко. Затримай перо на секунду, щоб <b>Shape Assist</b> вирівняв фігуру.</span></label></li>
+        <li><label><input type="checkbox" data-step="t22a"><span>Перевір порядок: коло має лежати на задньому плані (<b>Position</b>), а все інше — над ним.</span></label></li>
+        <li><label><input type="checkbox" data-step="t22a"><span>Виділи всі елементи (<kbd>Shift</kbd> + клацання) і згрупуй (<kbd>Ctrl</kbd> + <kbd>G</kbd>).</span></label></li>
+        <li><label><input type="checkbox" data-step="t22a"><span><b>Share → Download</b>: <b>PNG</b>, ім’я <b>емблема</b>. Якщо є тип <b>SVG</b>, збережи й його.</span></label></li>
       </ul>
-      <p class="group">Б. Готова графіка</p>
-      <ul class="steps">
-        <li><label><input type="checkbox" data-step="22"><span>Відкрий <b>Elements → Graphics</b>, знайди зірку (або книгу чи глобус) і додай її в центр кола.</span></label></li>
-        <li><label><input type="checkbox" data-step="22"><span>Зміни розмір графіки білими кружечками на кутах, а колір — через <b>Colour</b>.</span></label></li>
-      </ul>
-      <p class="group">В. Лінії</p>
-      <ul class="steps">
-        <li><label><input type="checkbox" data-step="22"><span>Натисни <kbd>L</kbd>, додай лінію й зроби її <b>кривою</b> (змінити тип лінії можна на панелі над полотном). Зігни її за маркер у вигляді хвилі.</span></label></li>
-        <li><label><input type="checkbox" data-step="22"><span>Задай лінії білий колір і товщину близько 10.</span></label></li>
-      </ul>
-      <p class="group">Г. Малювання</p>
-      <ul class="steps">
-        <li><label><input type="checkbox" data-step="22"><span>Відкрий <b>Draw</b>, вибери <b>Pen</b> і намалюй від руки маленьку зірочку або сердечко.</span></label></li>
-        <li><label><input type="checkbox" data-step="22"><span>Затримай перо на 1 секунду після малювання, щоб <b>Shape Assist</b> вирівняв фігуру. Постав її в зручне місце.</span></label></li>
-      </ul>
-      <p class="group">Д. Порядок, групування, збереження</p>
-      <ul class="steps">
-        <li><label><input type="checkbox" data-step="22"><span>Перевір порядок: усе має бути видно, а коло лежати на задньому плані (<b>Position</b>).</span></label></li>
-        <li><label><input type="checkbox" data-step="22"><span>Виділи всі елементи, утримуючи <kbd>Shift</kbd>, і згрупуй (<kbd>Ctrl</kbd> + <kbd>G</kbd>).</span></label></li>
-        <li><label><input type="checkbox" data-step="22"><span><b>Share → Download</b>, тип <b>PNG</b>, ім’я <b>емблема</b>. Якщо є тип <b>SVG</b>, збережи ще й його.</span></label></li>
-      </ul>
-      <p class="group">Е. Порівняння з растром</p>
-      <ul class="steps">
-        <li><label><input type="checkbox" data-step="22"><span>Завантаж будь-яку фотографію (<b>Uploads</b>) на сторінку поряд з емблемою. Збільш масштаб (повзунок внизу праворуч) до краю фотографії, а потім до краю кола. Порівняй.</span></label></li>
-      </ul>
-      <div class="where" style="margin-top:12px"><div class="t" style="margin-bottom:8px"><b>Запитання.</b> Що ти побачив(ла) при сильному збільшенні?</div>
-        <label class="opt" style="display:flex"><input type="radio" name="cmpQ" value="0"><span class="l">а)</span><span>І фото, і коло лишилися однаково чіткими.</span></label>
-        <label class="opt" style="display:flex"><input type="radio" name="cmpQ" value="1"><span class="l">б)</span><span>Фото «розсипалось» на квадратики, а контур кола лишився чітким.</span></label>
-        <label class="opt" style="display:flex"><input type="radio" name="cmpQ" value="2"><span class="l">в)</span><span>Коло розсипалось на квадратики, а фото лишилось чітким.</span></label>
-        <div class="fb" id="cmpFb" hidden></div>
-      </div>
-      <details class="hint"><summary>Щось не виходить?</summary><div>
-        <p><b>Елемент із короною просить оплату.</b> Така графіка платна для безкоштовного тарифу. Обери інший елемент без корони або використай фігури.</p>
-        <p><b>Не змінюється тип лінії.</b> Спершу клацни на лінії, щоб виділити її: інструменти з’являться над полотном.</p>
-        <p><b>Немає SVG у списку.</b> Це означає, що акаунт не Pro і не Education. Збережи PNG та PDF.</p>
-      </div></details>
-      <h3>Самоперевірка завдання 2</h3>
-      <p class="note">Постав галочку біля кожного виконаного пункту. Один пункт — 1 бал.</p>
-      <ul class="steps" data-crit="22">
+      <p class="group">Самоперевірка (1 пункт = 1 бал)</p>
+      <ul class="steps" data-crit="t22a">
         <li><label><input type="checkbox"><span>Є велике коло із власною заливкою й рамкою.</span></label></li>
         <li><label><input type="checkbox"><span>Додано готову графіку, змінено її розмір і колір.</span></label></li>
-        <li><label><input type="checkbox"><span>Додано криву лінію, яку зігнуто за маркер, із заданою товщиною.</span></label></li>
+        <li><label><input type="checkbox"><span>Додано криву лінію, зігнуту за маркер, із заданою товщиною.</span></label></li>
         <li><label><input type="checkbox"><span>Намальовано фігуру через Draw і вирівняно Shape Assist.</span></label></li>
-        <li><label><input type="checkbox"><span>Емблему згруповано й завантажено у форматі PNG (або SVG).</span></label></li>
-        <li><label><input type="checkbox"><span>Порівняно фото й коло при збільшенні, відповідь на запитання правильна.</span></label></li>
+        <li><label><input type="checkbox"><span>Порядок елементів правильний, емблему згруповано.</span></label></li>
+        <li><label><input type="checkbox"><span>Емблему завантажено у форматі PNG (або SVG).</span></label></li>
       </ul>
     </section>
 
-    <section id="q22">
-      <h2>Тест <span class="pts">4 бали</span></h2>
-      <p class="section-note">Вісім запитань, кожне за 0,5 бала. Відповідь одна.</p>
-      <form id="quiz22" onsubmit="return false" novalidate></form>
-      <button type="button" class="btn" id="btn22q">Перевірити відповіді</button>
-      <p class="msg" id="msg22q" role="status"></p>
-      <h3 style="margin-top:34px">Для тих, хто впорався раніше</h3>
-      <ol class="bonus">
-        <li>Додай до емблеми назву класу: <b>Elements → Text</b> (або клавіша <kbd>T</kbd>). Скористайся можливістю розмістити текст у фігурі.</li>
-        <li>Збережи емблему у форматах PNG і PDF й порівняй розмір файлів.</li>
-        <li>Створи другий варіант емблеми в інших кольорах, не перемальовуючи фігури.</li>
-      </ol>
-      <div class="sum" aria-live="polite" style="margin-top:26px">
+    <section id="t22b">
+      <h2>Завдання 2. Парусник на хвилях <span class="pts">6 балів</span></h2>
+      <p class="section-note">Багатошаровий морський пейзаж: небо, сонце, море, човен, хвилі й чайки.</p>
+      <figure class="sample2" style="max-width:360px;margin:6px 0 14px">
+        <svg viewBox="0 0 360 240" role="img" aria-label="Зразок: парусний човен на морі, сонце, чайки">
+          <rect width="360" height="240" fill="#BFE3FF"/><circle cx="300" cy="46" r="24" fill="#FFC93C"/>
+          <rect y="140" width="360" height="100" fill="#2E6FD0"/>
+          <rect x="110" y="140" width="130" height="34" rx="16" fill="#7A4B25"/>
+          <line x1="175" y1="40" x2="175" y2="142" stroke="#3A2A1A" stroke-width="5"/>
+          <polygon points="170,48 170,128 120,128" fill="#fff"/><polygon points="180,60 180,128 226,128" fill="#FFF1C9"/>
+          <polygon points="175,38 175,52 196,45" fill="#D64545"/>
+          <g fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"><path d="M90 168 C110 156 130 180 150 168 C170 156 190 180 210 168 C230 156 250 180 270 168"/><path d="M30 200 C50 188 70 212 90 200 C110 188 130 212 150 200"/><path d="M200 214 C220 202 240 226 260 214 C280 202 300 226 320 214"/></g>
+          <g fill="none" stroke="#223A5E" stroke-width="3" stroke-linecap="round"><path d="M40 60 q9 -12 18 0 q9 -12 18 0"/><path d="M230 90 q7 -9 14 0 q7 -9 14 0"/></g>
+        </svg>
+        <figcaption class="note">Зразок. Кольори й розміри можуть бути іншими.</figcaption>
+      </figure>
+      <div class="progress"><span id="prog-t22b">Виконано 0 з 12 кроків</span><div class="bar"><i id="bar-t22b"></i></div></div>
+
+      <p class="group">А. Небо, сонце, море</p>
+      <ul class="steps">
+        <li><label><input type="checkbox" data-step="t22b"><span>Створи дизайн <b>1200 × 800 px</b>. Додай блакитний прямокутник на всю сторінку й натисни <b>To back</b>.</span></label></li>
+        <li><label><input type="checkbox" data-step="t22b"><span>Додай жовте коло — сонце — у верхньому куті.</span></label></li>
+        <li><label><input type="checkbox" data-step="t22b"><span>Додай синій прямокутник — море — на нижню половину сторінки.</span></label></li>
+      </ul>
+      <p class="group">Б. Човен</p>
+      <ul class="steps">
+        <li><label><input type="checkbox" data-step="t22b"><span><b>Корпус.</b> Коричневий прямокутник із сильно заокругленими кутами (<b>Corners</b>) на морі.</span></label></li>
+        <li><label><input type="checkbox" data-step="t22b"><span><b>Щогла.</b> Натисни <kbd>L</kbd> і проведи вертикальну темну лінію (з <kbd>Shift</kbd>) завтовшки близько 10.</span></label></li>
+        <li><label><input type="checkbox" data-step="t22b"><span><b>Вітрила.</b> Два трикутники по боках щогли: білий і світло-жовтий. Зверху щогли додай маленький червоний трикутник-прапорець.</span></label></li>
+        <li><label><input type="checkbox" data-step="t22b"><span>Згрупуй човен (корпус, щоглу, вітрила, прапорець) і пересунь його на море.</span></label></li>
+      </ul>
+      <p class="group">В. Хвилі й чайки</p>
+      <ul class="steps">
+        <li><label><input type="checkbox" data-step="t22b"><span><b>Хвиля.</b> Додай лінію (<kbd>L</kbd>), зроби її кривою й зігни за маркер у хвилю. Білий колір, товщина близько 8.</span></label></li>
+        <li><label><input type="checkbox" data-step="t22b"><span>Скопіюй хвилю 3–4 рази й розстав на морі. Одну хвилю постав так, щоб вона перекривала нижню частину корпусу човна: для неї натисни <b>To front</b>.</span></label></li>
+        <li><label><input type="checkbox" data-step="t22b"><span><b>Чайки.</b> Накресли над морем 2–3 маленькі криві лінії у формі літери V (темно-синім, товщина 4) або намалюй їх у <b>Draw</b>.</span></label></li>
+      </ul>
+      <p class="group">Г. Перевірка й збереження</p>
+      <ul class="steps">
+        <li><label><input type="checkbox" data-step="t22b"><span>Відкрий <b>Position → Layers</b> і подивись порядок: небо, море, човен, хвилі, чайки.</span></label></li>
+        <li><label><input type="checkbox" data-step="t22b"><span><b>Share → Download</b>: <b>PNG</b>, ім’я <b>парусник</b>. Якщо є тип <b>SVG</b>, збережи й його; якщо ні, збережи <b>PDF</b>.</span></label></li>
+      </ul>
+      <details class="hint"><summary>Щось не виходить?</summary><div>
+        <p><b>Лінія не стає кривою.</b> Клацни на лінії, щоб виділити її: на панелі над полотном з’явиться вибір типу лінії.</p>
+        <p><b>Хвиля сховалась за човном.</b> Виділи її (через <b>Position → Layers</b>) і натисни <b>To front</b>.</p>
+        <p><b>Елемент із короною просить оплату.</b> Використай фігури замість готової графіки.</p>
+      </div></details>
+      <p class="group">Самоперевірка (1 пункт = 1 бал)</p>
+      <ul class="steps" data-crit="t22b">
+        <li><label><input type="checkbox"><span>Небо, море й сонце намальовані, небо лежить на задньому плані.</span></label></li>
+        <li><label><input type="checkbox"><span>Човен складається з корпусу, щогли-лінії, двох вітрил і прапорця, згрупований.</span></label></li>
+        <li><label><input type="checkbox"><span>Не менше трьох кривих ліній-хвиль, зігнутих за маркер.</span></label></li>
+        <li><label><input type="checkbox"><span>Є чайки з кривих ліній (або намальовані через Draw).</span></label></li>
+        <li><label><input type="checkbox"><span>Хвиля перекриває нижню частину корпусу (правильний порядок елементів).</span></label></li>
+        <li><label><input type="checkbox"><span>Малюнок завантажено у форматі PNG та SVG (або PDF).</span></label></li>
+      </ul>
+    </section>
+
+    <section id="s22">
+      <div class="sum" aria-live="polite">
         <h3 class="sumName">Мій підсумок</h3>
-        <dl><dt>Завдання 1. Растрове чи векторне?</dt><dd id="s22a">не перевірено</dd>
-        <dt>Завдання 2. Емблема класу</dt><dd id="s22b">0 з 6</dd>
-        <dt>Тест</dt><dd id="s22t">не пройдено</dd>
+        <dl><dt>Завдання 1. Емблема класу</dt><dd id="s22a">0 з 6</dd>
+        <dt>Завдання 2. Парусник на хвилях</dt><dd id="s22b">0 з 6</dd>
         <dt>Разом</dt><dd class="total" id="s22T">0 з 12</dd></dl>
-        <p class="small">Покажи цей підсумок і свій файл учителю. Остаточну оцінку виставляє вчитель.</p>
+        <p class="small">Покажи вчителю файли емблема.png і парусник.png разом із цим підсумком. Остаточну оцінку виставляє вчитель.</p>
       </div>
+      <h3 style="margin-top:26px">Для тих, хто впорався раніше</h3>
+      <ol class="bonus">
+        <li>Додай до емблеми назву класу: <b>Elements → Text</b> (клавіша <kbd>T</kbd>).</li>
+        <li>Завантаж фотографію (<b>Uploads</b>) поруч з емблемою й збільш масштаб до краю фото, а потім до краю кола. Що ти бачиш? Поясни різницю між растром і вектором.</li>
+        <li>Створи «вечірню» версію парусника, змінивши лише кольори, не перемальовуючи фігури.</li>
+      </ol>
     </section>
   </div>
 
-  <footer>Тема 4. Графічні зображення, уроки 20–22. Інформація про можливості Canva взята з довідки Canva (фігури, лінії, Draw, групування, шари, завантаження).</footer>
+  <footer>Тема 4. Графічні зображення, уроки 20–22. Палітра з пензлем адаптована за вправою 4.2 підручника «Інформатика, 6 клас» (Ривкінд та ін.). Дії в Canva описано за довідкою Canva.</footer>
 </main>
 
 <script>
@@ -758,348 +648,45 @@ footer{margin-top:40px;color:var(--ink-soft);font-size:14px}
   };
   var $ = function(s,r){ return (r||document).querySelector(s); };
   var $$ = function(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
-  var letters = ["а","б","в","г"];
-  function fmt(n){ return String(n).replace(".",","); }
-  var pts = { 20:{a:null,b:0,t:null}, 21:{a:0,b:0,t:null}, 22:{a:null,b:0,t:null} };
 
-  /* name */
   var nameInput = $("#name");
-  nameInput.value = store.get("c1_name") || "";
+  nameInput.value = store.get("c3_name") || "";
   function renderName(){ var v = nameInput.value.trim(); $$(".sumName").forEach(function(h){ h.textContent = v ? "Підсумок: " + v : "Мій підсумок"; }); }
-  nameInput.addEventListener("input", function(){ store.set("c1_name", nameInput.value); renderName(); });
+  nameInput.addEventListener("input", function(){ store.set("c3_name", nameInput.value); renderName(); });
   renderName();
 
-  /* tabs */
   var tabs = ["20","21","22"];
   function showTab(n){
     tabs.forEach(function(k){
       $("#p"+k).hidden = (k !== n);
       $("#tab"+k).setAttribute("aria-selected", k === n ? "true" : "false");
     });
-    store.set("c1_tab", n); window.scrollTo(0,0);
+    store.set("c3_tab", n); window.scrollTo(0,0);
   }
   tabs.forEach(function(k){ $("#tab"+k).addEventListener("click", function(){ showTab(k); }); });
-  var st = store.get("c1_tab"); if(st && tabs.indexOf(st) > -1 && st !== "20") showTab(st);
+  var st = store.get("c3_tab"); if(st && tabs.indexOf(st) > -1 && st !== "20") showTab(st);
 
-  /* helpers */
-  function buildQuiz(form, T){
-    T.forEach(function(q){
-      var fs = document.createElement("fieldset"); fs.className = "q";
-      var lg = document.createElement("legend"); lg.textContent = q.text; fs.appendChild(lg);
-      var order = q.opts.map(function(_,k){ return k; });
-      for(var s=order.length-1;s>0;s--){ var r = Math.floor(Math.random()*(s+1)); var tmp = order[s]; order[s] = order[r]; order[r] = tmp; }
-      order.forEach(function(j,pos){
-        var o = q.opts[j];
-        var lab = document.createElement("label"); lab.className = "opt";
-        var inp = document.createElement("input"); inp.type = "radio"; inp.name = q.id; inp.value = j;
-        var l = document.createElement("span"); l.className = "l"; l.textContent = letters[pos]+")";
-        var t = document.createElement("span"); t.textContent = o;
-        lab.appendChild(inp); lab.appendChild(l); lab.appendChild(t); fs.appendChild(lab);
-      });
-      var fb = document.createElement("div"); fb.className = "fb"; fb.hidden = true; fs.appendChild(fb);
-      form.appendChild(fs);
-    });
-  }
-  function gradeQuiz(T, btn, msg, key){
-    var done = false, conf = false;
-    btn.addEventListener("click", function(){
-      if(done) return;
-      var missing = [];
-      T.forEach(function(q,i){ if(!$('input[name="'+q.id+'"]:checked')) missing.push(i+1); });
-      if(missing.length && !conf){
-        msg.textContent = "Немає відповіді на запитання: " + missing.join(", ") + ". Дай відповідь або натисни кнопку ще раз, щоб перевірити як є.";
-        conf = true; return;
-      }
-      var score = 0;
-      T.forEach(function(q){
-        var sel = $('input[name="'+q.id+'"]:checked'), fs = $('input[name="'+q.id+'"]').closest("fieldset");
-        var v = sel ? +sel.value : -1, ok = v === q.right; if(ok) score++;
-        $$(".opt",fs).forEach(function(lab){
-          var jv = +$("input",lab).value; $("input",lab).disabled = true;
-          if(jv===q.right) lab.classList.add("is-right"); else if(jv===v) lab.classList.add("is-wrong");
-        });
-        var fb = $(".fb",fs); fb.hidden = false; fb.className = "fb " + (ok ? "ok" : "no"); fb.innerHTML = "";
-        var b = document.createElement("b"); b.textContent = ok ? "Правильно. " : "Не зовсім. ";
-        fb.appendChild(b); fb.appendChild(document.createTextNode(q.why));
-      });
-      done = true; btn.disabled = true;
-      pts[key].t = score*0.5; msg.textContent = "Правильних відповідей: " + score + " з " + T.length + ".";
-      update();
-    });
-  }
-  function selectCheck(listEl, items, optionsList, btn, msg, onScore){
-    items.forEach(function(w,i){
-      var li = document.createElement("li");
-      var t = document.createElement("span"); t.className = "t"; t.textContent = (i+1)+". "+w.t;
-      var sel = document.createElement("select"); sel.setAttribute("aria-label", w.t);
-      var o0 = document.createElement("option"); o0.value = ""; o0.textContent = "Обери…"; sel.appendChild(o0);
-      optionsList.forEach(function(k){ var o = document.createElement("option"); o.value = k; o.textContent = k; sel.appendChild(o); });
-      li.appendChild(t); li.appendChild(sel); listEl.appendChild(li);
-    });
-    var done = false, conf = false;
-    btn.addEventListener("click", function(){
-      if(done) return;
-      var missing = [];
-      $$("select",listEl).forEach(function(s,i){ if(!s.value) missing.push(i+1); });
-      if(missing.length && !conf){
-        msg.textContent = "Не обрано в рядках: " + missing.join(", ") + ". Обери або натисни кнопку ще раз, щоб перевірити як є."; conf = true; return;
-      }
-      var ok = 0;
-      $$("li",listEl).forEach(function(li,i){
-        var s = $("select",li), good = s.value === items[i].a; if(good) ok++;
-        s.disabled = true; li.classList.add(good ? "is-right" : "is-wrong");
-        var a = document.createElement("div"); a.className = "ans";
-        a.textContent = good ? "Правильно." : "Правильна відповідь: " + items[i].a + "."; li.appendChild(a);
-      });
-      done = true; btn.disabled = true;
-      msg.textContent = "Правильних відповідей: " + ok + " з " + items.length + ".";
-      onScore(ok);
-    });
-  }
-
-  /* Canva window schematic */
-  var R = {
-    top:["Верхня панель","Тут назва дизайну й кнопка Share (Поділитися): через неї дизайн завантажують або відкривають іншим."],
-    side:["Бічна панель","Тут вибирають, що додати: Elements (фігури, графіка), Text, Uploads (свої файли), Draw (малювання), Tools."],
-    toolbar:["Панель інструментів елемента","З’являється над полотном, коли виділено елемент: Colour, Border, Corners, Transparency, Position та інші."],
-    canvas:["Полотно","Це сторінка твого дизайну. Усе, що ти додаєш, розміщується тут."],
-    bottom:["Сторінки й масштаб","Внизу є повзунок масштабу: ним збільшують і зменшують вигляд дизайну."]
-  };
-  var regs = $$("#p20 .winfig .reg");
-  function showReg(g){
-    regs.forEach(function(x){ x.classList.remove("on"); }); g.classList.add("on");
-    var d = R[g.getAttribute("data-r")], box = $("#regText20"); box.innerHTML = "";
-    var b = document.createElement("b"); b.textContent = d[0]; box.appendChild(b); box.appendChild(document.createTextNode(d[1]));
-  }
-  regs.forEach(function(g){
-    g.addEventListener("click", function(){ showReg(g); });
-    g.addEventListener("keydown", function(e){ if(e.key==="Enter" || e.key===" "){ e.preventDefault(); showReg(g); } });
-  });
-  var WN = ["Верхня панель","Бічна панель","Панель інструментів елемента","Полотно","Сторінки й масштаб"];
-  selectCheck($("#where20"), [
-    {t:"Тут шукають фігури та готову графіку.", a:"Бічна панель"},
-    {t:"Тут змінюють колір виділеної фігури.", a:"Панель інструментів елемента"},
-    {t:"Тут розміщено твій малюнок.", a:"Полотно"},
-    {t:"Тут є кнопка Share для завантаження дизайну.", a:"Верхня панель"}
-  ], WN, $("#btn20a"), $("#msg20a"), function(ok){ pts[20].a = ok === 4 ? 2 : (ok >= 2 ? 1 : 0); update(); });
-
-  /* shape playground */
-  var pg = {shape:$("#pgShape"), color:$("#pgColor"), b:$("#pgBorder"), r:$("#pgRound"), rot:$("#pgRot"), op:$("#pgOp")};
-  function drawPg(){
-    var sh = pg.shape.value, col = pg.color.value, bw = +pg.b.value, rr = +pg.r.value, rot = +pg.rot.value, op = 1 - (+pg.op.value)/100;
-    $("#oBorder").textContent = bw; $("#oRound").textContent = rr; $("#oRot").textContent = rot + "°"; $("#oOp").textContent = pg.op.value + " %";
-    pg.r.disabled = sh !== "rect";
-    var el, code;
-    var style = 'fill="' + col + '" stroke="#173B73" stroke-width="' + bw + '" opacity="' + op.toFixed(1) + '"';
-    var tr = ' transform="rotate(' + rot + ' 100 100)"';
-    if(sh === "rect"){ el = '<rect x="40" y="55" width="120" height="90" rx="' + rr + '" ' + style + tr + '/>'; code = '<rect x="40" y="55" width="120" height="90"\n      rx="' + rr + '" fill="' + col + '"\n      stroke-width="' + bw + '" opacity="' + op.toFixed(1) + '" rotate="' + rot + '"/>'; }
-    else if(sh === "ellipse"){ el = '<ellipse cx="100" cy="100" rx="62" ry="48" ' + style + tr + '/>'; code = '<ellipse cx="100" cy="100" rx="62" ry="48"\n      fill="' + col + '" stroke-width="' + bw + '"\n      opacity="' + op.toFixed(1) + '" rotate="' + rot + '"/>'; }
-    else { el = '<polygon points="100,40 160,150 40,150" ' + style + ' stroke-linejoin="round"' + tr + '/>'; code = '<polygon points="100,40 160,150 40,150"\n      fill="' + col + '" stroke-width="' + bw + '"\n      opacity="' + op.toFixed(1) + '" rotate="' + rot + '"/>'; }
-    $("#pgView").innerHTML = '<svg viewBox="0 0 200 200" width="100%" height="100%">' + el + '</svg>';
-    $("#pgCode").textContent = code;
-  }
-  Object.keys(pg).forEach(function(k){ pg[k].addEventListener("input", drawPg); pg[k].addEventListener("change", drawPg); });
-  $("#pgZoom").addEventListener("change", function(){
-    var v = $("#pgView"); v.classList.toggle("zoomed", this.checked);
-  });
-  drawPg();
-
-  /* steps + criteria for each lesson */
-  [20,21,22].forEach(function(n){
-    var steps = $$('[data-step="'+n+'"]');
+  var TASKS = [["t20a",5],["t20b",7],["t21a",5],["t21b",7],["t22a",6],["t22b",6]];
+  var pts = {};
+  TASKS.forEach(function(t){
+    var id = t[0]; pts[id] = 0;
+    var steps = $$('[data-step="'+id+'"]');
     steps.forEach(function(c){ c.addEventListener("change", function(){
       var d = steps.filter(function(x){ return x.checked; }).length;
-      $("#prog"+n).textContent = "Виконано " + d + " з " + steps.length + " кроків"; $("#bar"+n).style.width = (100*d/steps.length) + "%";
+      $("#prog-"+id).textContent = "Виконано " + d + " з " + steps.length + " кроків";
+      $("#bar-"+id).style.width = (100*d/steps.length) + "%";
     }); });
-    $("#prog"+n).textContent = "Виконано 0 з " + steps.length + " кроків";
-    var cr = $$('[data-crit="'+n+'"] input');
-    cr.forEach(function(c){ c.addEventListener("change", function(){ pts[n].b = cr.filter(function(x){ return x.checked; }).length; update(); }); });
+    $("#prog-"+id).textContent = "Виконано 0 з " + steps.length + " кроків";
+    var cr = $$('[data-crit="'+id+'"] input');
+    if(cr.length !== t[1]){ console.warn("criteria count mismatch for " + id); }
+    cr.forEach(function(c){ c.addEventListener("change", function(){ pts[id] = cr.filter(function(x){ return x.checked; }).length; update(); }); });
   });
-
-  /* tests */
-  var T20 = [
-    { id:"a1", text:"Що таке Canva?", opts:["програма, яка працює лише без інтернету","графічний редактор, що працює в браузері","текстовий процесор","операційна система"], right:1, why:"Canva працює прямо в браузері, встановлювати її не потрібно." },
-    { id:"a2", text:"Де знайти готові фігури?", opts:["Uploads","Share","Elements → Shapes","Position"], right:2, why:"Фігури шукають у Elements → Shapes." },
-    { id:"a3", text:"Як змінити розмір фігури, щоб вона зберегла пропорції?", opts:["тягнути за білі кружечки на кутах","тягнути за значок повороту","натиснути Ctrl + Z","двічі клацнути на фігурі"], right:0, why:"Кутові кружечки змінюють розмір пропорційно, а бічні «таблетки» — тільки ширину чи висоту." },
-    { id:"a4", text:"Яка клавіша (англійська розкладка) швидко додає лінію?", opts:["R","C","L","T"], right:2, why:"L — лінія, R — прямокутник, C — коло, T — текст." },
-    { id:"a5", text:"Де змінюють колір виділеної фігури?", opts:["на кнопці Share","на плитці Colour панелі над полотном","у списку сторінок","на повзунку масштабу"], right:1, why:"Колір змінюють на плитці Colour на панелі інструментів елемента." },
-    { id:"a6", text:"Що робить кнопка Corners для багатокутника?", opts:["змінює кількість сторін і заокруглення кутів","видаляє фігуру","копіює фігуру","блокує фігуру"], right:0, why:"Через Corners додають сторони й змінюють заокруглення." },
-    { id:"a7", text:"Які елементи в Canva векторні?", opts:["фотографії з комп’ютера","фігури й лінії з Elements","знімки екрана","усі завантажені файли"], right:1, why:"Фігури, лінії та графіка з Elements векторні, а завантажені фото растрові." },
-    { id:"a8", text:"Як повернути фігуру?", opts:["потягнути за значок повороту під нею","натиснути Delete","двічі клацнути по сторінці","натиснути Ctrl + G"], right:0, why:"Поворот виконують значком, який з’являється під виділеною фігурою." }
-  ];
-  var T21 = [
-    { id:"b1", text:"Який елемент у Canva закриває інші?", opts:["той, що лежить на передньому плані","той, що найбільший","той, що найновіший","той, що найяскравіший"], right:0, why:"Шари на передньому плані закривають ті, що позаду." },
-    { id:"b2", text:"Де в Canva можна побачити список усіх елементів сторінки?", opts:["Share → Download","Position → Layers","Elements → Shapes","Draw"], right:1, why:"Список елементів відкривається у Position → Layers." },
-    { id:"b3", text:"Які варіанти порядку є в меню Position?", opts:["Forward, Backward, To front, To back","Open, Save, Close","Copy, Paste, Cut","Group, Ungroup, Lock"], right:0, why:"Forward і Backward пересувають на один шар, To front і To back — на край." },
-    { id:"b4", text:"Яка комбінація клавіш групує виділені елементи?", opts:["Ctrl + Z","Ctrl + G","Ctrl + S","Ctrl + A"], right:1, why:"Ctrl + G групує, а розгрупувати можна кнопкою Ungroup." },
-    { id:"b5", text:"Як виділити кілька елементів?", opts:["клацати на них, утримуючи Shift","натиснути Enter","двічі клацнути по сторінці","натиснути Tab"], right:0, why:"Shift + клацання додає елементи до виділення; можна й обвести їх рамкою." },
-    { id:"b6", text:"Для чого потрібне групування?", opts:["щоб видалити фігури","щоб пересувати й змінювати розмір кількох фігур разом","щоб змінити колір сторінки","щоб зберегти файл"], right:1, why:"Група поводиться як один елемент." },
-    { id:"b7", text:"Що робить значок замка на панелі елемента?", opts:["захищає елемент від випадкового переміщення","видаляє елемент","робить елемент прозорим","копіює елемент"], right:0, why:"Заблокований елемент неможливо випадково зсунути." },
-    { id:"b8", text:"Чим відрізняються групування і порядок шарів?", opts:["нічим","групування об’єднує елементи, порядок визначає, хто з них попереду","порядок об’єднує, а групування змінює колір","групування змінює формат файлу"], right:1, why:"Групування робить кілька фігур одним елементом, а порядок вирішує, що закриває що." }
-  ];
-  var T22 = [
-    { id:"c1", text:"Які бувають лінії в Canva?", opts:["лише прямі","прямі, криві та ламані","лише криві","лише пунктирні"], right:1, why:"Є прямі, криві й ламані (коліна) лінії." },
-    { id:"c2", text:"Яка функція перетворює намальовану від руки фігуру на рівну?", opts:["Eraser","Highlighter","Shape Assist","Position"], right:2, why:"Shape Assist вирівнює фігуру, якщо затримати перо на секунду." },
-    { id:"c3", text:"Що з наведеного растрове?", opts:["фігура з Elements","лінія з Elements","фотографія, завантажена з комп’ютера","коло, яке ти додав(ла)"], right:2, why:"Завантажене фото складається з пікселів." },
-    { id:"c4", text:"У якому форматі Canva зберігає векторне зображення?", opts:["PNG","SVG","JPG","MP4"], right:1, why:"SVG — векторний формат, на безкоштовному тарифі його немає." },
-    { id:"c5", text:"Які формати доступні на безкоштовному тарифі?", opts:["SVG і JPG","лише SVG","PNG, JPG і PDF","жодного"], right:2, why:"Безкоштовно можна завантажити PNG, JPG або PDF." },
-    { id:"c6", text:"Що можна зробити із завантаженим SVG-елементом?", opts:["змінити розмір і колір","змінити контур і кути","додати фото всередину","віддзеркалити будь-яку точку"], right:0, why:"Завантажений SVG можна лише збільшувати або перефарбовувати." },
-    { id:"c7", text:"Що відбувається з векторним елементом при сильному збільшенні?", opts:["він розсипається на піксели","лишається чітким","зникає","стає чорно-білим"], right:1, why:"Векторний елемент зберігається як опис, тому лишається чітким." },
-    { id:"c8", text:"Які інструменти має Draw?", opts:["Pen, Marker, Highlighter, Eraser","Copy, Paste, Cut","Group, Lock, Align","Download, Share, Print"], right:0, why:"У Draw є перо, маркер, текстовиділювач і гумка." }
-  ];
-  buildQuiz($("#quiz20"), T20); gradeQuiz(T20, $("#btn20q"), $("#msg20q"), 20);
-  buildQuiz($("#quiz21"), T21); gradeQuiz(T21, $("#btn21q"), $("#msg21q"), 21);
-  buildQuiz($("#quiz22"), T22); gradeQuiz(T22, $("#btn22q"), $("#msg22q"), 22);
-
-  /* layer sim (lesson 21) */
-  var scenes = {
-    sky: '<rect width="320" height="200" fill="#BFE3FF"/><rect y="150" width="320" height="50" fill="#4A9E5C"/>',
-    sun: '<circle cx="150" cy="104" r="40" fill="#FFC93C"/>',
-    house: '<rect x="108" y="98" width="94" height="68" fill="#E8D7B5"/><polygon points="98,100 155,52 212,100" fill="#C0392B"/><rect x="146" y="126" width="22" height="40" fill="#7A4B25"/><rect x="176" y="112" width="18" height="18" fill="#4A90E2"/>'
-  };
-  var layers = [
-    {id:"house", name:"Будинок", op:100, lock:false},
-    {id:"sun", name:"Сонце", op:100, lock:false},
-    {id:"sky", name:"Небо", op:100, lock:false}
-  ];
-  var active = "house";
-  function redrawPrev(){
-    var html = "";
-    for(var i=layers.length-1;i>=0;i--){ var L = layers[i]; html += '<g opacity="' + (L.op/100) + '">' + scenes[L.id] + '</g>'; }
-    $("#simPrev21").innerHTML = html;
-  }
-  function move(i, to){
-    var L = layers.splice(i,1)[0]; layers.splice(to,0,L); drawSim();
-  }
-  function drawSim(){
-    redrawPrev();
-    var host = $("#simList21"); host.innerHTML = "";
-    var head = document.createElement("div"); head.className = "head"; head.textContent = "Шари (зверху вниз: передній план → задній план)"; host.appendChild(head);
-    layers.forEach(function(L,i){
-      var row = document.createElement("div"); row.className = "lrow" + (L.id===active ? " on" : "");
-      var nm = document.createElement("span"); nm.className = "nm"; nm.textContent = L.name;
-      function mk(txt, dis, fn, label){
-        var b = document.createElement("button"); b.type = "button"; b.textContent = txt; b.disabled = dis; b.setAttribute("aria-label", label + ": " + L.name);
-        b.addEventListener("click", function(e){ e.stopPropagation(); fn(); }); return b;
-      }
-      var lock = document.createElement("button"); lock.type = "button"; lock.textContent = L.lock ? "Замок: зачинено" : "Замок: відчинено"; lock.setAttribute("aria-pressed", L.lock ? "true" : "false"); lock.setAttribute("aria-label","Блокування шару " + L.name);
-      lock.addEventListener("click", function(e){ e.stopPropagation(); L.lock = !L.lock; drawSim(); });
-      row.appendChild(nm);
-      row.appendChild(mk("To front", i===0, function(){ move(i,0); }, "На передній план"));
-      row.appendChild(mk("Forward", i===0, function(){ move(i,i-1); }, "Вище"));
-      row.appendChild(mk("Backward", i===layers.length-1, function(){ move(i,i+1); }, "Нижче"));
-      row.appendChild(mk("To back", i===layers.length-1, function(){ move(i,layers.length-1); }, "На задній план"));
-      row.appendChild(lock);
-      row.addEventListener("click", function(){ active = L.id; drawSim(); });
-      host.appendChild(row);
-    });
-    var cur = layers.filter(function(l){ return l.id === active; })[0];
-    var opr = document.createElement("div"); opr.className = "opr";
-    var lab = document.createElement("label"); lab.setAttribute("for","simOp21"); lab.textContent = "Непрозорість (" + cur.name + ")";
-    var rng = document.createElement("input"); rng.type = "range"; rng.id = "simOp21"; rng.min = 0; rng.max = 100; rng.step = 5; rng.value = cur.op;
-    var out = document.createElement("output"); out.textContent = cur.op + " %";
-    rng.addEventListener("input", function(){ cur.op = +rng.value; out.textContent = cur.op + " %"; redrawPrev(); });
-    opr.appendChild(lab); opr.appendChild(rng); opr.appendChild(out); host.appendChild(opr);
-    var note = document.createElement("p"); note.className = "note"; note.style.margin = "6px 6px 2px";
-    note.textContent = "Замок захищає елемент від випадкового переміщення; на вигляд малюнка він не впливає.";
-    host.appendChild(note);
-  }
-  drawSim();
-  var rules21 = {
-    front: function(){ var s = layers.map(function(l){ return l.id; }); return s.indexOf("sun") < s.indexOf("house"); },
-    back: function(){ return layers[layers.length-1].id === "house"; },
-    opac: function(){ return layers.filter(function(l){ return l.id==="sun"; })[0].op <= 50; }
-  };
-  $$("#tasks21 li").forEach(function(li){
-    var btn = $("button",li), stt = $(".st",li);
-    btn.addEventListener("click", function(){
-      if(rules21[li.getAttribute("data-t")]()){ li.classList.add("done"); stt.textContent = "Зараховано"; btn.disabled = true; pts[21].a++; update(); }
-      else { stt.textContent = "Ще ні"; stt.style.color = "var(--bad)"; }
-    });
-  });
-
-  /* grouping demo */
-  var grouped = false, dxs = {wall:0, roof:0, door:0};
-  function drawGrp(){
-    var s = '';
-    s += '<rect x="0" y="130" width="320" height="30" fill="#4A9E5C"/>';
-    s += '<rect x="'+(100+dxs.wall)+'" y="70" width="100" height="60" fill="#E8D7B5" stroke="#7A5A2B" stroke-width="2"/>';
-    s += '<rect x="'+(138+dxs.door)+'" y="92" width="24" height="38" fill="#7A4B25"/>';
-    s += '<polygon points="'+(90+dxs.roof)+',72 '+(150+dxs.roof)+',28 '+(210+dxs.roof)+',72" fill="#C0392B"/>';
-    if(grouped) s += '<rect x="'+(84+dxs.wall)+'" y="22" width="132" height="114" fill="none" stroke="#7D2AE8" stroke-width="2" stroke-dasharray="6 4"/>';
-    $("#grpSvg").innerHTML = s;
-  }
-  $("#grpMove").addEventListener("click", function(){
-    if(grouped){ dxs.wall += 20; dxs.roof += 20; dxs.door += 20; } else { dxs.roof += 20; }
-    var maxd = 80; Object.keys(dxs).forEach(function(k){ if(dxs[k] > maxd) dxs[k] = maxd; });
-    drawGrp();
-  });
-  $("#grpToggle").addEventListener("click", function(){
-    grouped = !grouped; this.textContent = grouped ? "Розгрупувати" : "Згрупувати";
-    $("#grpNote").textContent = grouped ? "Фігури згруповано: дах, стіни й двері рухаються разом." : "Фігури не згруповано: рухається тільки дах.";
-    drawGrp();
-  });
-  $("#grpReset").addEventListener("click", function(){ dxs = {wall:0, roof:0, door:0}; drawGrp(); });
-  drawGrp();
-
-  /* lesson 22: classification, bezier model, comparison question */
-  selectCheck($("#sort22"), [
-    {t:"Фотографія, завантажена з комп’ютера (Uploads)", a:"Растрове"},
-    {t:"Фігура «Коло» з Elements → Shapes", a:"Векторне"},
-    {t:"Файл з розширенням .svg", a:"Векторне"},
-    {t:"Файл з розширенням .png", a:"Растрове"},
-    {t:"Лінія, додана клавішею L", a:"Векторне"},
-    {t:"Знімок екрана (скріншот)", a:"Растрове"}
-  ], ["Растрове","Векторне"], $("#btn22a"), $("#msg22a"), function(ok){ pts[22].a = ok >= 6 ? 2 : (ok >= 4 ? 1 : 0); update(); });
-  /* quadratic curve model */
-  var Q = {a:[40,150], h:[180,30], b:[320,150]}, Q0 = JSON.parse(JSON.stringify(Q)), qdrag = false;
-  function setQ(){
-    $("#qPath").setAttribute("d","M "+Q.a[0]+","+Q.a[1]+" Q "+Q.h[0]+","+Q.h[1]+" "+Q.b[0]+","+Q.b[1]);
-    $("#qa").setAttribute("x",Q.a[0]-8); $("#qa").setAttribute("y",Q.a[1]-8);
-    $("#qb").setAttribute("x",Q.b[0]-8); $("#qb").setAttribute("y",Q.b[1]-8);
-    $("#qh").setAttribute("cx",Q.h[0]); $("#qh").setAttribute("cy",Q.h[1]);
-    var g1=$("#qg1"), g2=$("#qg2");
-    g1.setAttribute("x1",Q.a[0]); g1.setAttribute("y1",Q.a[1]); g1.setAttribute("x2",Q.h[0]); g1.setAttribute("y2",Q.h[1]);
-    g2.setAttribute("x1",Q.b[0]); g2.setAttribute("y1",Q.b[1]); g2.setAttribute("x2",Q.h[0]); g2.setAttribute("y2",Q.h[1]);
-    $("#qCode").textContent = 'Початок: (' + Q.a[0] + '; ' + Q.a[1] + ')\nМаркер вигину: (' + Q.h[0] + '; ' + Q.h[1] + ')\nКінець: (' + Q.b[0] + '; ' + Q.b[1] + ')\n\n<path d="M ' + Q.a[0] + ',' + Q.a[1] + ' Q ' + Q.h[0] + ',' + Q.h[1] + ' ' + Q.b[0] + ',' + Q.b[1] + '"/>';
-  }
-  var qsvg = $("#qSvg");
-  $("#qh").addEventListener("pointerdown", function(e){ qdrag = true; try{ this.setPointerCapture(e.pointerId); }catch(er){} e.preventDefault(); });
-  qsvg.addEventListener("pointermove", function(e){
-    if(!qdrag) return; var r = qsvg.getBoundingClientRect();
-    Q.h[0] = Math.round(Math.max(8,Math.min(352,(e.clientX-r.left)*360/r.width)));
-    Q.h[1] = Math.round(Math.max(8,Math.min(192,(e.clientY-r.top)*200/r.height))); setQ();
-  });
-  window.addEventListener("pointerup", function(){ qdrag = false; });
-  $("#qh").addEventListener("keydown", function(e){
-    var d = {ArrowLeft:[-6,0],ArrowRight:[6,0],ArrowUp:[0,-6],ArrowDown:[0,6]}[e.key];
-    if(d){ Q.h[0] += d[0]; Q.h[1] += d[1]; setQ(); e.preventDefault(); }
-  });
-  setQ();
-  var cmpDone = false;
-  $$('input[name="cmpQ"]').forEach(function(r){ r.addEventListener("change", function(){
-    if(cmpDone) return; cmpDone = true;
-    var ok = r.value === "1", fb = $("#cmpFb");
-    $$('input[name="cmpQ"]').forEach(function(x){ x.disabled = true; var lab = x.closest("label"); if(x.value === "1") lab.classList.add("is-right"); else if(x === r) lab.classList.add("is-wrong"); });
-    fb.hidden = false; fb.className = "fb " + (ok ? "ok" : "no");
-    fb.textContent = (ok ? "Правильно. " : "Не зовсім. ") + "Фото складається з пікселів і при збільшенні «розсипається», а векторне коло лишається чітким.";
-  }); });
-
-  /* summary */
   function update(){
-    var a = pts[20], b = pts[21], c = pts[22];
-    $("#s20a").textContent = a.a === null ? "не перевірено" : a.a + " з 2";
-    $("#s20b").textContent = a.b + " з 6";
-    $("#s20t").textContent = a.t === null ? "не пройдено" : fmt(a.t) + " з 4";
-    $("#s20T").textContent = fmt((a.a||0) + a.b + (a.t||0)) + " з 12";
-    $("#s21a").textContent = b.a + " з 3";
-    $("#s21b").textContent = b.b + " з 5";
-    $("#s21t").textContent = b.t === null ? "не пройдено" : fmt(b.t) + " з 4";
-    $("#s21T").textContent = fmt(b.a + b.b + (b.t||0)) + " з 12";
-    $("#s22a").textContent = c.a === null ? "не перевірено" : c.a + " з 2";
-    $("#s22b").textContent = c.b + " з 6";
-    $("#s22t").textContent = c.t === null ? "не пройдено" : fmt(c.t) + " з 4";
-    $("#s22T").textContent = fmt((c.a||0) + c.b + (c.t||0)) + " з 12";
+    [["20","t20a","t20b",5,7],["21","t21a","t21b",5,7],["22","t22a","t22b",6,6]].forEach(function(r){
+      $("#s"+r[0]+"a").textContent = pts[r[1]] + " з " + r[3];
+      $("#s"+r[0]+"b").textContent = pts[r[2]] + " з " + r[4];
+      $("#s"+r[0]+"T").textContent = (pts[r[1]] + pts[r[2]]) + " з 12";
+    });
   }
   update();
 })();
